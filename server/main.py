@@ -12,6 +12,7 @@ Features:
 """
 from fastapi import FastAPI, Request, status, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from server.schemas import HealthResponse, ErrorResponse
@@ -85,8 +86,19 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
-# Add usage tracking middleware
-app.add_middleware(UsageTrackingMiddleware)
+# Add URL normalization middleware
+class URLNormalizationMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        # Normalize path by replacing multiple consecutive slashes with single slash
+        import re
+        normalized_path = re.sub(r'/+', '/', request.url.path)
+        if normalized_path != request.url.path:
+            request.scope['path'] = normalized_path
+            logger.debug(f"Normalized path: {request.url.path} -> {normalized_path}")
+        return await call_next(request)
+
+# Add URL normalization middleware (before other middlewares)
+app.add_middleware(URLNormalizationMiddleware)
 
 # Add usage limit checking middleware
 app.add_middleware(UsageLimitMiddleware)
