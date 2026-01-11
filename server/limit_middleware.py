@@ -35,6 +35,10 @@ class UsageLimitMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         """Check usage limits before processing request."""
         
+        # Skip OPTIONS requests (CORS preflight)
+        if request.method == "OPTIONS":
+            return await call_next(request)
+        
         # Only check for token-consuming endpoints
         if not any(request.url.path.startswith(endpoint) for endpoint in self.TOKEN_CONSUMING_ENDPOINTS):
             return await call_next(request)
