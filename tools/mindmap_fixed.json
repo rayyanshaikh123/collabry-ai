@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {"id": "root", "label": "Appointment App - The Perfect Booking System", "level": 0},
+    {"id": "user_roles", "label": "User Roles", "level": 1},
+    {"id": "core_features", "label": "Core Features & Functionalities", "level": 1},
+    {"id": "customer_features", "label": "Customer (End User) Features", "level": 2},
+    {"id": "overview", "label": "Overview", "level": 1},
+    {"id": "admin_dashboard", "label": "Admin Dashboard", "level": 1},
+    {"id": "reports_insights", "label": "Reports & Insights", "level": 1},
+    {"id": "view_all_bookings", "label": "View All Bookings", "level": 2},
+    {"id": "booking_details", "label": "Booking Details: Customer name, Time & Service, Status", "level": 2},
+    {"id": "total_appointments", "label": "Total Appointments", "level": 2},
+    {"id": "provider_utilization", "label": "Provider Utilization", "level": 2},
+    {"id": "system_monitoring", "label": "System-level monitoring & control", "level": 1},
+    {"id": "real_time_availability", "label": "Real-time availability calculation", "level": 2}
+  ],
+  "edges": [
+    {"from": "root", "to": "user_roles"},
+    {"from": "root", "to": "core_features"},
+    {"from": "root", "to": "overview"},
+    {"from": "root", "to": "admin_dashboard"},
+    {"from": "root", "to": "system_monitoring"},
+    {"from": "user_roles", "to": "customer_features"},
+    {"from": "core_features", "to": "real_time_availability"},
+    {"from": "core_features", "to": "reports_insights"},
+    {"from": "reports_insights", "to": "view_all_bookings"},
+    {"from": "reports_insights", "to": "booking_details"},
+    {"from": "reports_insights", "to": "total_appointments"},
+    {"from": "reports_insights", "to": "provider_utilization"}
+  ]
+}

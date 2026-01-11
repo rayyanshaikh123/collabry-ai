@@ -1,0 +1,8 @@
+{
+  "allowed_url_hosts": [
+    "en.wikipedia.org",
+    "rayyanshaikh.me",
+    "www.youtube.com"
+  ],
+  "allowed_commands": []
+}

@@ -1,0 +1,50 @@
+{"text": "play never gonna give you up on youtube", "label": "play_youtube"}
+{"text": "play bohemian rhapsody on youtube", "label": "play_youtube"}
+{"text": "play the song 11k by seedhe maut on youtube", "label": "play_youtube"}
+{"text": "play never gonna give you up", "label": "play_youtube"}
+{"text": "play some lo-fi beats", "label": "play_youtube"}
+{"text": "open visual studio code", "label": "open_app"}
+{"text": "launch vscode", "label": "open_app"}
+{"text": "open gmail in chrome", "label": "open_app"}
+{"text": "open chatgpt in chrome", "label": "open_app"}
+{"text": "open youtube", "label": "open_app"}
+{"text": "fetch https://example.com and summarize the page", "label": "web_scrape"}
+{"text": "scrape the page https://rayyanshaikh.me and list socials", "label": "web_scrape"}
+{"text": "scrape https://github.com/rayyan for readme", "label": "web_scrape"}
+{"text": "visit https://news.ycombinator.com and summarize top posts", "label": "web_scrape"}
+{"text": "summarize the article at https://example.org/article", "label": "web_scrape"}
+{"text": "search for best pizza places near me", "label": "search"}
+{"text": "google how to cook rice", "label": "search"}
+{"text": "find me tutorials for docker", "label": "search"}
+{"text": "look up how to fix a leaky faucet", "label": "search"}
+{"text": "search for python json tutorial", "label": "search"}
+{"text": "read README.md and summarize it", "label": "read_file"}
+{"text": "open notes.txt and show me the content", "label": "read_file"}
+{"text": "read project/overview.md and summarize", "label": "read_file"}
+{"text": "open C:\\Users\\rayyan\\notes.txt and read it", "label": "read_file"}
+{"text": "extract text from screenshot.png", "label": "ocr"}
+{"text": "read text from this image photo.jpg", "label": "ocr"}
+{"text": "ocr the scanned_page.png and return the text", "label": "ocr"}
+{"text": "generate an image of a cat wearing a hat", "label": "image_generation"}
+{"text": "create an image of a spaceship flying over mars", "label": "image_generation"}
+{"text": "make an illustration of a robot reading a book", "label": "image_generation"}
+{"text": "create a report about quarterly revenue", "label": "create_report"}
+{"text": "generate a PDF report from sales data", "label": "create_report"}
+{"text": "create a presentation about product roadmap", "label": "create_report"}
+{"text": "schedule a task to run daily at 7pm", "label": "schedule_task"}
+{"text": "remind me every day at 8:00 to exercise", "label": "schedule_task"}
+{"text": "set a reminder for tomorrow at 9am", "label": "schedule_task"}
+{"text": "what is the weather in London tomorrow", "label": "weather"}
+{"text": "weather in New York", "label": "weather"}
+{"text": "will it rain on friday in Seattle", "label": "weather"}
+{"text": "who am I", "label": "personal_name"}
+{"text": "what's my name", "label": "personal_name"}
+{"text": "my name is Rayyan Shaikh", "label": "personal_name"}
+{"text": "tell me about rayyan shaikh website", "label": "web_scrape"}
+{"text": "open his instagram on chrome", "label": "open_app"}
+{"text": "show me the sources", "label": "search"}
+{"text": "give me the sources for that summary", "label": "search"}
+{"text": "please list the links mentioned in the page", "label": "web_scrape"}
+{"text": "none of the above", "label": "none"}
+{"text": "just say hi", "label": "none"}
+{"text": "hello there", "label": "none"}

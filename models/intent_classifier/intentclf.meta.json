@@ -1,0 +1,17 @@
+{
+  "num_labels": 12,
+  "labels": [
+    "create_report",
+    "image_generation",
+    "none",
+    "ocr",
+    "open_app",
+    "personal_name",
+    "play_youtube",
+    "read_file",
+    "schedule_task",
+    "search",
+    "weather",
+    "web_scrape"
+  ]
+}

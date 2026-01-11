@@ -1,0 +1,202 @@
+{"text": "play never gonna give you up on youtube", "label": "play_youtube"}
+{"text": "play bohemian rhapsody on youtube", "label": "play_youtube"}
+{"text": "play the song 11k by seedhe maut on youtube", "label": "play_youtube"}
+{"text": "play never gonna give you up", "label": "play_youtube"}
+{"text": "play some lo-fi beats", "label": "play_youtube"}
+{"text": "open visual studio code", "label": "open_app"}
+{"text": "launch vscode", "label": "open_app"}
+{"text": "open gmail in chrome", "label": "open_app"}
+{"text": "open chatgpt in chrome", "label": "open_app"}
+{"text": "open youtube", "label": "open_app"}
+{"text": "fetch https://example.com and summarize the page", "label": "web_scrape"}
+{"text": "scrape the page https://rayyanshaikh.me and list socials", "label": "web_scrape"}
+{"text": "scrape https://github.com/rayyan for readme", "label": "web_scrape"}
+{"text": "visit https://news.ycombinator.com and summarize top posts", "label": "web_scrape"}
+{"text": "summarize the article at https://example.org/article", "label": "web_scrape"}
+{"text": "search for best pizza places near me", "label": "search"}
+{"text": "google how to cook rice", "label": "search"}
+{"text": "find me tutorials for docker", "label": "search"}
+{"text": "look up how to fix a leaky faucet", "label": "search"}
+{"text": "search for python json tutorial", "label": "search"}
+{"text": "read README.md and summarize it", "label": "read_file"}
+{"text": "open notes.txt and show me the content", "label": "read_file"}
+{"text": "read project/overview.md and summarize", "label": "read_file"}
+{"text": "open C:\\Users\\rayyan\\notes.txt and read it", "label": "read_file"}
+{"text": "extract text from screenshot.png", "label": "ocr"}
+{"text": "read text from this image photo.jpg", "label": "ocr"}
+{"text": "ocr the scanned_page.png and return the text", "label": "ocr"}
+{"text": "generate an image of a cat wearing a hat", "label": "image_generation"}
+{"text": "create an image of a spaceship flying over mars", "label": "image_generation"}
+{"text": "make an illustration of a robot reading a book", "label": "image_generation"}
+{"text": "create a report about quarterly revenue", "label": "create_report"}
+{"text": "generate a PDF report from sales data", "label": "create_report"}
+{"text": "create a presentation about product roadmap", "label": "create_report"}
+{"text": "schedule a task to run daily at 7pm", "label": "schedule_task"}
+{"text": "remind me every day at 8:00 to exercise", "label": "schedule_task"}
+{"text": "set a reminder for tomorrow at 9am", "label": "schedule_task"}
+{"text": "what is the weather in London tomorrow", "label": "weather"}
+{"text": "weather in New York", "label": "weather"}
+{"text": "will it rain on friday in Seattle", "label": "weather"}
+{"text": "who am I", "label": "personal_name"}
+{"text": "what's my name", "label": "personal_name"}
+{"text": "my name is Rayyan Shaikh", "label": "personal_name"}
+{"text": "tell me about rayyan shaikh website", "label": "web_scrape"}
+{"text": "open his instagram on chrome", "label": "open_app"}
+{"text": "show me the sources", "label": "search"}
+{"text": "give me the sources for that summary", "label": "search"}
+{"text": "please list the links mentioned in the page", "label": "web_scrape"}
+{"text": "none of the above", "label": "none"}
+{"text": "just say hi", "label": "none"}
+{"text": "hello there", "label": "none"}
+{"text": "play never gonna give you up on yt", "label": "play_youtube"}
+{"text": "could you play never gonna give you up on youtube?", "label": "play_youtube"}
+{"text": "please play bohemian rhapsody on youtube", "label": "play_youtube"}
+{"text": "play bohemian rhapsody on yt", "label": "play_youtube"}
+{"text": "play bohemian rhapsody", "label": "play_youtube"}
+{"text": "could you play the song 11k by seedhe maut on youtube?", "label": "play_youtube"}
+{"text": "play the song 11k by seedhe maut", "label": "play_youtube"}
+{"text": "play the song 11k by seedhe maut on yt", "label": "play_youtube"}
+{"text": "play the song never gonna give you up", "label": "play_youtube"}
+{"text": "could you play some lo-fi beats on youtube?", "label": "play_youtube"}
+{"text": "please play some lo-fi beats on youtube", "label": "play_youtube"}
+{"text": "play some lo-fi beats on youtube", "label": "play_youtube"}
+{"text": "could you open visual studio code?", "label": "open_app"}
+{"text": "open visual studio code in chrome", "label": "open_app"}
+{"text": "please open visual studio code in chrome", "label": "open_app"}
+{"text": "start visual studio code", "label": "open_app"}
+{"text": "could you open vscode?", "label": "open_app"}
+{"text": "open vscode in chrome", "label": "open_app"}
+{"text": "start vscode", "label": "open_app"}
+{"text": "please open gmail in chrome", "label": "open_app"}
+{"text": "launch gmail", "label": "open_app"}
+{"text": "could you open gmail?", "label": "open_app"}
+{"text": "please open chatgpt in chrome", "label": "open_app"}
+{"text": "start chatgpt", "label": "open_app"}
+{"text": "open chatgpt", "label": "open_app"}
+{"text": "launch chatgpt", "label": "open_app"}
+{"text": "open youtube in chrome", "label": "open_app"}
+{"text": "could you open youtube?", "label": "open_app"}
+{"text": "start youtube", "label": "open_app"}
+{"text": "summarize the page https://example.com", "label": "web_scrape"}
+{"text": "scrape https://example.com and give me a summary", "label": "web_scrape"}
+{"text": "get https://example.com and list the links", "label": "web_scrape"}
+{"text": "fetch https://example.com and summarize", "label": "web_scrape"}
+{"text": "scrape https://rayyanshaikh.me and give me a summary", "label": "web_scrape"}
+{"text": "fetch https://rayyanshaikh.me and summarize", "label": "web_scrape"}
+{"text": "summarize the page https://rayyanshaikh.me", "label": "web_scrape"}
+{"text": "get https://rayyanshaikh.me and list the links", "label": "web_scrape"}
+{"text": "fetch https://github.com/rayyan and summarize", "label": "web_scrape"}
+{"text": "summarize the page https://github.com/rayyan", "label": "web_scrape"}
+{"text": "scrape https://github.com/rayyan and give me a summary", "label": "web_scrape"}
+{"text": "get https://github.com/rayyan and list the links", "label": "web_scrape"}
+{"text": "get https://news.ycombinator.com and list the links", "label": "web_scrape"}
+{"text": "scrape https://news.ycombinator.com and give me a summary", "label": "web_scrape"}
+{"text": "summarize the page https://news.ycombinator.com", "label": "web_scrape"}
+{"text": "fetch https://news.ycombinator.com and summarize", "label": "web_scrape"}
+{"text": "scrape https://example.org/article and give me a summary", "label": "web_scrape"}
+{"text": "fetch https://example.org/article and summarize", "label": "web_scrape"}
+{"text": "get https://example.org/article and list the links", "label": "web_scrape"}
+{"text": "summarize the page https://example.org/article", "label": "web_scrape"}
+{"text": "can you search for best pizza places near me?", "label": "search"}
+{"text": "look up best pizza places near me", "label": "search"}
+{"text": "find best pizza places near me", "label": "search"}
+{"text": "look up how to cook rice", "label": "search"}
+{"text": "can you search for how to cook rice?", "label": "search"}
+{"text": "find how to cook rice", "label": "search"}
+{"text": "search for find me tutorials for docker", "label": "search"}
+{"text": "google find me tutorials for docker", "label": "search"}
+{"text": "look up find me tutorials for docker", "label": "search"}
+{"text": "find find me tutorials for docker", "label": "search"}
+{"text": "look up look up how to fix a leaky faucet", "label": "search"}
+{"text": "find look up how to fix a leaky faucet", "label": "search"}
+{"text": "can you search for look up how to fix a leaky faucet?", "label": "search"}
+{"text": "google look up how to fix a leaky faucet", "label": "search"}
+{"text": "find python json tutorial", "label": "search"}
+{"text": "google python json tutorial", "label": "search"}
+{"text": "can you search for python json tutorial?", "label": "search"}
+{"text": "open README.md and summarize it", "label": "read_file"}
+{"text": "show me the contents of README.md", "label": "read_file"}
+{"text": "display README.md", "label": "read_file"}
+{"text": "read README.md", "label": "read_file"}
+{"text": "show me the contents of notes.txt", "label": "read_file"}
+{"text": "open notes.txt and summarize it", "label": "read_file"}
+{"text": "display notes.txt", "label": "read_file"}
+{"text": "read notes.txt", "label": "read_file"}
+{"text": "open project/overview.md and summarize it", "label": "read_file"}
+{"text": "display project/overview.md", "label": "read_file"}
+{"text": "read project/overview.md", "label": "read_file"}
+{"text": "show me the contents of project/overview.md", "label": "read_file"}
+{"text": "display \\Users\\rayyan\\notes.txt", "label": "read_file"}
+{"text": "read \\Users\\rayyan\\notes.txt", "label": "read_file"}
+{"text": "show me the contents of \\Users\\rayyan\\notes.txt", "label": "read_file"}
+{"text": "open \\Users\\rayyan\\notes.txt and summarize it", "label": "read_file"}
+{"text": "read text from screenshot.png", "label": "ocr"}
+{"text": "ocr screenshot.png", "label": "ocr"}
+{"text": "please extract text from screenshot.png", "label": "ocr"}
+{"text": "please extract text from photo.jpg", "label": "ocr"}
+{"text": "extract text from photo.jpg", "label": "ocr"}
+{"text": "ocr photo.jpg", "label": "ocr"}
+{"text": "read text from photo.jpg", "label": "ocr"}
+{"text": "extract text from scanned_page.png", "label": "ocr"}
+{"text": "ocr scanned_page.png", "label": "ocr"}
+{"text": "read text from scanned_page.png", "label": "ocr"}
+{"text": "please extract text from scanned_page.png", "label": "ocr"}
+{"text": "make an illustration of generate an image of a cat wearing a hat", "label": "image_generation"}
+{"text": "generate an image of generate an image of a cat wearing a hat", "label": "image_generation"}
+{"text": "please create an image of generate an image of a cat wearing a hat", "label": "image_generation"}
+{"text": "make an illustration of create an image of a spaceship flying over mars", "label": "image_generation"}
+{"text": "create an image of create an image of a spaceship flying over mars", "label": "image_generation"}
+{"text": "generate an image of create an image of a spaceship flying over mars", "label": "image_generation"}
+{"text": "create an image of make an illustration of a robot reading a book", "label": "image_generation"}
+{"text": "please create an image of make an illustration of a robot reading a book", "label": "image_generation"}
+{"text": "make an illustration of make an illustration of a robot reading a book", "label": "image_generation"}
+{"text": "create a report about quarterly revenue please", "label": "create_report"}
+{"text": "please create a report about quarterly revenue", "label": "create_report"}
+{"text": "generate a PDF report from sales data please", "label": "create_report"}
+{"text": "please generate a PDF report from sales data", "label": "create_report"}
+{"text": "create a presentation about product roadmap please", "label": "create_report"}
+{"text": "please create a presentation about product roadmap", "label": "create_report"}
+{"text": "remind me schedule a task to run daily at 7pm", "label": "schedule_task"}
+{"text": "please schedule schedule a task to run daily at 7pm", "label": "schedule_task"}
+{"text": "set a reminder schedule a task to run daily at 7pm", "label": "schedule_task"}
+{"text": "remind me remind me every day at 8:00 to exercise", "label": "schedule_task"}
+{"text": "set a reminder remind me every day at 8:00 to exercise", "label": "schedule_task"}
+{"text": "please schedule remind me every day at 8:00 to exercise", "label": "schedule_task"}
+{"text": "set a reminder set a reminder for tomorrow at 9am", "label": "schedule_task"}
+{"text": "remind me set a reminder for tomorrow at 9am", "label": "schedule_task"}
+{"text": "please schedule set a reminder for tomorrow at 9am", "label": "schedule_task"}
+{"text": "what is the weather in London tomorrow please", "label": "weather"}
+{"text": "please what is the weather in London tomorrow", "label": "weather"}
+{"text": "weather in New York please", "label": "weather"}
+{"text": "please weather in New York", "label": "weather"}
+{"text": "will it rain on friday in Seattle please", "label": "weather"}
+{"text": "please will it rain on friday in Seattle", "label": "weather"}
+{"text": "do you know my name?", "label": "personal_name"}
+{"text": "get tell me about rayyan shaikh website and list the links", "label": "web_scrape"}
+{"text": "scrape tell me about rayyan shaikh website and give me a summary", "label": "web_scrape"}
+{"text": "fetch tell me about rayyan shaikh website and summarize", "label": "web_scrape"}
+{"text": "summarize the page tell me about rayyan shaikh website", "label": "web_scrape"}
+{"text": "launch his instagram on chrome", "label": "open_app"}
+{"text": "open his instagram on chrome in chrome", "label": "open_app"}
+{"text": "could you open his instagram on chrome?", "label": "open_app"}
+{"text": "search for show me the sources", "label": "search"}
+{"text": "look up show me the sources", "label": "search"}
+{"text": "can you search for show me the sources?", "label": "search"}
+{"text": "google show me the sources", "label": "search"}
+{"text": "find give me the sources for that summary", "label": "search"}
+{"text": "look up give me the sources for that summary", "label": "search"}
+{"text": "search for give me the sources for that summary", "label": "search"}
+{"text": "can you search for give me the sources for that summary?", "label": "search"}
+{"text": "get please list the links mentioned in the page and list the links", "label": "web_scrape"}
+{"text": "summarize the page please list the links mentioned in the page", "label": "web_scrape"}
+{"text": "fetch please list the links mentioned in the page and summarize", "label": "web_scrape"}
+{"text": "scrape please list the links mentioned in the page and give me a summary", "label": "web_scrape"}
+{"text": "hey, none of the above", "label": "none"}
+{"text": "please none of the above", "label": "none"}
+{"text": "hi, none of the above", "label": "none"}
+{"text": "please just say hi", "label": "none"}
+{"text": "hi, just say hi", "label": "none"}
+{"text": "hey, just say hi", "label": "none"}
+{"text": "hey, hello there", "label": "none"}
+{"text": "hi, hello there", "label": "none"}
+{"text": "please hello there", "label": "none"}

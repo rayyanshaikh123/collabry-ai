@@ -1,0 +1,1933 @@
+[
+  {
+    "text": "recent entry",
+    "metadata": {
+      "tags": [
+        "test"
+      ],
+      "doc_id": "ee94e0ba-d243-484c-9653-3bb627f1ddb7",
+      "created_at": 1763626683.1157603
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "5796495d-eba2-4d8d-a327-bd0b2b43b53e",
+      "created_at": 1763627612.755568
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "5d64d533-9cfa-423a-8885-c0a46ede4c1c",
+      "created_at": 1763627636.127282
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "ea15e528-1cf5-40e8-9932-e4354cf41275",
+      "created_at": 1763627655.5497773
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "8fa0f1a2-997f-498c-b1b8-77553e50d203",
+      "created_at": 1763627670.0595899
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "ae085f78-8a0d-4684-994f-a62de092816f",
+      "created_at": 1763627670.06459
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "d55c3de1-4372-4f6d-9978-27e4adb77c30",
+      "created_at": 1763628107.7946274
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "bc049ebc-73d6-4ef9-87b8-96e3f3060faa",
+      "created_at": 1763628128.8643289
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "cde9d680-632f-4817-aba4-abbe5c7bf86a",
+      "created_at": 1763628148.492991
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "493d48f1-0563-4186-bf3d-cee7b12402b1",
+      "created_at": 1763628162.55946
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "5f40f741-9cd8-48a0-89e2-718bf0ffd024",
+      "created_at": 1763628162.5644598
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "3cb074cb-0385-4f8e-82f6-0bf2d47ec1f9",
+      "created_at": 1763628660.7502623
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "cf71f181-3242-476d-9461-5ab27b79b311",
+      "created_at": 1763628683.6093225
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "2aac5cad-2712-4bdc-adaf-caa90531894a",
+      "created_at": 1763628700.9963558
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "98fb941a-9569-48b3-afe5-047fd16d48e6",
+      "created_at": 1763628715.072147
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "378b4032-8485-40d3-b95b-4af042a84cf5",
+      "created_at": 1763628715.0771468
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "eb7446d1-fb06-4c72-99de-6076e5de3268",
+      "created_at": 1763629047.4369347
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "dbb49a17-4528-41e3-bdea-7ab43adf7e84",
+      "created_at": 1763629063.3050337
+    }
+  },
+  {
+    "text": "Opened URL in Chrome via detected path: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe -> https://instagram.com/rayyanshaikh",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "fdcbcf31-5bb5-410d-8444-5634a51c59dd",
+      "created_at": 1763629063.3090334
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "c7997795-d0fe-4584-8539-239996a97bc9",
+      "created_at": 1763629167.5503218
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "d8adf47c-288c-403e-9060-f58cde203fed",
+      "created_at": 1763629285.871806
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "d564bd27-f6f2-4c0a-8151-80ce42a37a7c",
+      "created_at": 1763629332.5283842
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "038c15a7-fe2d-4bfa-9a1d-e99a199aae7e",
+      "created_at": 1763629415.0773628
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "3397afee-8e9f-42bb-879e-b48b78e841a4",
+      "created_at": 1763629458.8330877
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "9dacd949-3204-4c4c-808f-d44315cddbe4",
+      "created_at": 1763629498.1432946
+    }
+  },
+  {
+    "text": "LLM fallback answer",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "12bd0ed6-b0ee-4c7d-b0eb-4f9fe6741a44",
+      "created_at": 1763629621.3230822
+    }
+  },
+  {
+    "text": "Search results for: Who is the president of the United States?\n1. Result 1 — Snippet 1 (https://example.com/1)\n2. Result 2 — Snippet 2 (https://example.com/2)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "8f54ea75-db83-4741-8761-a9e587081beb",
+      "created_at": 1763629683.2322729
+    }
+  },
+  {
+    "text": "Search results for: Who is the president of the United States?\n1. Result 1 — Snippet 1 (https://example.com/1)\n2. Result 2 — Snippet 2 (https://example.com/2)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "f422fdf3-df43-4dbc-a7da-560ef7f9bdb3",
+      "created_at": 1763629710.5521395
+    }
+  },
+  {
+    "text": "Search results for: scrape https://rayyanshaikh.me\n1. ERROR — Fetch failed: 420 Client Error: X-Forbidden for url: https://www.theverge.com/ (https://www.theverge.com/)\n2. TechCrunch | Startup and Technology News — AI Nvidia’s record $57B revenue and upbeat forecast quiets AI bubble talk Kirsten Korosec 10 hours ago Security How the classic anime ‘Ghost in the Shell’ predicted the future of cybersecurity 30 years ago Lorenzo Franceschi-Bicchierai 11 hours ago Commerce Cavela lands $6.6M to help brands beat pre-tariff manufacturing costs Marina Temkin 11 hours ago Top Headlines Legally embattled AI music star (https://techcrunch.com/)\n3. WIRED - The Latest in Technology, Science, Culture and Business | WIRED — WIRED TODAY'S PICKS Trending Stories Fed v. States Trump Takes Aim at State AI Laws in Draft Executive Order The draft order, obtained by WIRED, instructs the US Justice Department to sue states that pass laws regulating AI. By Maxwell Zeff and Makena Kelly Inner Loop How Donald Trump Lost Control of the Epstein Spin Cycle Donald Trump has spent years benefiting from the QAnon's Jeffrey Epstein ob (https://www.wired.com/)\n4. Tech - CNET — Get the tech that takes you places Our experts share the newest products and technologies that get you the most out of your world. Explore by Topics All Tech Mobile Home Entertainment VPN Computing Services & Software Gaming Streaming Services Top In Tech The most popular tech news, stories and tips. 5 Best VPNs 2025 Best TV in 2025: Tested and Reviewed by TV Experts Best Live TV Streaming Service (https://www.cnet.com/tech/)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "0ffd78c6-1c9a-4860-9b37-0bda9dd0f03e",
+      "created_at": 1763629733.2193816
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "725b6d02-468b-4e32-a665-9f29deea3087",
+      "created_at": 1763629748.782669
+    }
+  },
+  {
+    "text": "Search results for: who is the biggest gpu holder of the world?\n1. NVIDIA reports record shipments — NVIDIA leads GPU market with large data center sales. (https://example.com/nvidia)\n2. Analysis: GPU ownership — Institutional investors hold stakes in major GPU makers like NVIDIA and AMD. (https://example.com/analysis)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "c1241ab6-262c-46b5-ac07-acaa5e6c5b06",
+      "created_at": 1763629748.788669
+    }
+  },
+  {
+    "text": "Search results for: Who is the president of the United States?\n1. Result 1 — Snippet 1 (https://example.com/1)\n2. Result 2 — Snippet 2 (https://example.com/2)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "7c3f08be-a46c-44a9-8169-00d30054de05",
+      "created_at": 1763629844.0973086
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "aebb9a88-b8f1-41a6-8a71-ed377e7adefa",
+      "created_at": 1763629862.3310254
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "fe9b2ff4-05c5-4bff-a90c-a51b370aad6d",
+      "created_at": 1763629880.9453778
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "373230a7-b578-499c-a294-db23466abe43",
+      "created_at": 1763629895.1714025
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "9108c8b5-b903-4161-a7d0-6bc6d4917c89",
+      "created_at": 1763629895.1774027
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "5af571cb-cc7c-4516-b2d7-71b14123e1fa",
+      "created_at": 1763629933.7409024
+    }
+  },
+  {
+    "text": "Opened URL in Chrome via detected path: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe -> https://instagram.com/rayyanshaikh",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "111fbadc-9f3b-4a7f-9ac4-7b62576b9381",
+      "created_at": 1763629933.7459018
+    }
+  },
+  {
+    "text": "Search results for: Who is the president of the United States?\n1. Result 1 — Snippet 1 (https://example.com/1)\n2. Result 2 — Snippet 2 (https://example.com/2)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "6a5bf78d-2b22-4171-8d84-5d9051227046",
+      "created_at": 1763630067.6143851
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "e4692cf3-3bd2-4be5-8f7d-0df2787fd344",
+      "created_at": 1763630067.6213863
+    }
+  },
+  {
+    "text": "Opened URL in Chrome via detected path: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe -> https://instagram.com/rayyanshaikh",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "1b7905a6-42d7-4ccd-8822-bc741c4ed2a8",
+      "created_at": 1763630067.6233842
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "294e2451-23c9-4aff-8fbb-653a69bfbafa",
+      "created_at": 1763630082.3293023
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "f7d267fc-b4c1-49da-8b55-1811f43e8c99",
+      "created_at": 1763630082.3353024
+    }
+  },
+  {
+    "text": "Search results for: Who is the president of the United States?\n1. Result 1 — Snippet 1 (https://example.com/1)\n2. Result 2 — Snippet 2 (https://example.com/2)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "85f3ed42-4def-4485-9ebd-59e31cdbf4a8",
+      "created_at": 1763630166.6904306
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "82f5351c-7748-49e5-a06c-1bc4450cd34f",
+      "created_at": 1763630166.6964312
+    }
+  },
+  {
+    "text": "Opened URL in Chrome via detected path: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe -> https://instagram.com/rayyanshaikh",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "152760b0-97b1-4432-94b5-b720e5ba2dab",
+      "created_at": 1763630166.7014308
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "48bb4b94-1fce-4b47-a451-5d35b71b93eb",
+      "created_at": 1763630182.1095254
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "93869aaf-70da-4e19-9323-ad37f3644e3f",
+      "created_at": 1763630182.1155255
+    }
+  },
+  {
+    "text": "Search results for: Who is the president of the United States?\n1. Result 1 — Snippet 1 (https://example.com/1)\n2. Result 2 — Snippet 2 (https://example.com/2)",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "208ce41b-70a8-4322-8c0a-0680b17ebbed",
+      "created_at": 1763630671.8542578
+    }
+  },
+  {
+    "text": "Summary: Dummy summary",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "1599e6cb-451a-4ac4-92cd-ea601e7e1b0c",
+      "created_at": 1763630671.8602595
+    }
+  },
+  {
+    "text": "Opened URL in Chrome via detected path: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe -> https://instagram.com/rayyanshaikh",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "45543bdf-ce27-410c-881c-2c970be7932d",
+      "created_at": 1763630671.8652582
+    }
+  },
+  {
+    "text": "Summary: Rayyan Shaikh is a web developer focused on UI and accessibility; notable projects include A, B, and C.",
+    "metadata": {
+      "source": "tool:web_scrape",
+      "doc_id": "aa9455e4-98c8-4ca2-8af2-28ca644bf061",
+      "created_at": 1763630687.2140677
+    }
+  },
+  {
+    "text": "Summary: NVIDIA appears to be the dominant GPU holder due to market share and data-center sales.",
+    "metadata": {
+      "source": "tool:web_search",
+      "doc_id": "2ac6ff56-15e1-4ed5-96ba-7e3a9c8b4a8c",
+      "created_at": 1763630687.220068
+    }
+  },
+  {
+    "text": "Opened URL in Chrome via detected path: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe -> https://www.youtube.com/watch?v=AbkEmIgJMcU",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "4bb21e1a-1526-4e6c-bf92-d54497f5b045",
+      "created_at": 1763630966.4267113
+    }
+  },
+  {
+    "text": "Music paused.",
+    "metadata": {
+      "source": "llm:plain_answer",
+      "doc_id": "ce440446-c9a9-48f2-8ff7-a201cad0fc5f",
+      "created_at": 1763631040.504006
+    }
+  },
+  {
+    "text": "Netflix is now available on your computer.",
+    "metadata": {
+      "source": "llm:plain_answer",
+      "doc_id": "2411fdf2-d70c-4f91-b454-21af5776a922",
+      "created_at": 1763631294.384397
+    }
+  },
+  {
+    "text": "Opened: C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Microsoft Azure\\Microsoft Azure SDK for .NET\\v2.9\\Release Notes.lnk",
+    "metadata": {
+      "source": "tool:system_automation",
+      "doc_id": "9ac7f045-fddb-458b-8812-3ab60ea344be",
+      "created_at": 1763632608.7795074
+    }
+  },
+  {
+    "text": "what is the capital of france",
+    "metadata": {
+      "source": "user",
+      "doc_id": "a1dbdf20-f3dd-4327-aece-e97bdc8dab0d"
+    },
+    "created_at": 1763636826.6207423
+  },
+  {
+    "text": "what is the capital of france",
+    "metadata": {
+      "source": "user",
+      "doc_id": "970c70f8-1c30-49e6-a8ed-49e263438da2"
+    },
+    "created_at": 1763636891.469683
+  },
+  {
+    "text": "whats the capital of india",
+    "metadata": {
+      "source": "user",
+      "doc_id": "4dd19f4d-59c8-42f2-9328-2d23fbcdc3d3"
+    },
+    "created_at": 1763636900.0050223
+  },
+  {
+    "text": "what are arrays",
+    "metadata": {
+      "source": "user",
+      "doc_id": "6e7625da-3bed-4056-a886-f6dcad28d6e7"
+    },
+    "created_at": 1763636908.6135764
+  },
+  {
+    "text": "array values starts with...",
+    "metadata": {
+      "source": "user",
+      "doc_id": "1a75a7ab-87e8-4046-bffb-3e92e614c2f9"
+    },
+    "created_at": 1763636920.6621833
+  },
+  {
+    "text": "best programming language",
+    "metadata": {
+      "source": "user",
+      "doc_id": "35ef5cb2-0114-4e84-9907-1b293817065b"
+    },
+    "created_at": 1763636933.2934186
+  },
+  {
+    "text": "myself rayyan shaikh",
+    "metadata": {
+      "type": "user",
+      "doc_id": "4604a7fd-d24f-435d-863a-8166f2e5a258"
+    },
+    "created_at": 1763637195.23106
+  },
+  {
+    "text": "Nice to meet you, Rayyan Shaikh! How can I assist you today?",
+    "metadata": {
+      "type": "assistant",
+      "doc_id": "97bede4b-fb2a-4ee5-84b5-c1710e3cd295"
+    },
+    "created_at": 1763637195.2315652
+  },
+  {
+    "text": "what are arryas",
+    "metadata": {
+      "type": "user",
+      "doc_id": "cd90d0d1-58b6-4a1b-9e82-e536abef9470"
+    },
+    "created_at": 1763637205.2300608
+  },
+  {
+    "text": "You're likely thinking of arrays. In computer science and many programming languages, an array is a collection of elements that can be of the same or different data types stored in contiguous memory locations.",
+    "metadata": {
+      "type": "assistant",
+      "doc_id": "91ba2314-898d-4353-96ab-55845ce17d29"
+    },
+    "created_at": 1763637205.2312658
+  },
+  {
+    "text": "hey COLLABRY",
+    "metadata": {
+      "type": "user_message",
+      "doc_id": "809246b9-c347-4c86-9292-153e138fa1bf"
+    },
+    "created_at": 1763637916.2189207
+  },
+  {
+    "text": "what is a array",
+    "metadata": {
+      "type": "user_message",
+      "doc_id": "c234e623-ded6-461d-b88d-94c46c57098d"
+    },
+    "created_at": 1763637934.7371373
+  },
+  {
+    "text": "what is a queueee",
+    "metadata": {
+      "type": "user_message",
+      "doc_id": "92144d58-8704-4c0f-8963-cd4131b42d79"
+    },
+    "created_at": 1763637945.99322
+  },
+  {
+    "text": "hey COLLABRY",
+    "metadata": {
+      "source": "user",
+      "doc_id": "bd6bf1f7-dc6f-49db-9dbc-49e2a274ea0d"
+    },
+    "created_at": 1763639863.5173678
+  },
+  {
+    "text": "what is the capital of farncew",
+    "metadata": {
+      "source": "user",
+      "doc_id": "2a145773-43a7-484a-aba5-a5c263c5d562"
+    },
+    "created_at": 1763639878.3719635
+  },
+  {
+    "text": "wahts thw capital of india",
+    "metadata": {
+      "source": "user",
+      "doc_id": "7a1a79a8-d96b-4221-9eef-ad1ad818441b"
+    },
+    "created_at": 1763639893.2609525
+  },
+  {
+    "text": "btw i am rayyan shaikh",
+    "metadata": {
+      "source": "user",
+      "doc_id": "b1255b98-789e-4bbe-ba5e-1c1424a303a5"
+    },
+    "created_at": 1763639907.8775756
+  },
+  {
+    "text": "what is an arrya",
+    "metadata": {
+      "source": "user",
+      "doc_id": "7ad07bd5-3edf-436a-a664-42d4a29c0ee0"
+    },
+    "created_at": 1763639916.5159237
+  },
+  {
+    "text": "whats my naem",
+    "metadata": {
+      "source": "user",
+      "doc_id": "4c046d4a-d213-4216-b16f-f4e91fa8cd2b"
+    },
+    "created_at": 1763639922.7159615
+  },
+  {
+    "text": "shutdown",
+    "metadata": {
+      "source": "user",
+      "doc_id": "0af5f60f-2810-4c31-86aa-6ca7b0b2ff4b"
+    },
+    "created_at": 1763639936.1308906
+  },
+  {
+    "text": "Who is the current President of India?",
+    "metadata": {
+      "source": "user",
+      "doc_id": "35250ac9-154e-468e-bb58-53a56b3860c9"
+    },
+    "created_at": 1763641896.4362679
+  },
+  {
+    "text": "search for the president of india",
+    "metadata": {
+      "source": "user",
+      "doc_id": "6772ff67-edb5-4123-96d7-9728e4dfdcad"
+    },
+    "created_at": 1763643049.9224546
+  },
+  {
+    "text": "search for the president of india",
+    "metadata": {
+      "source": "user",
+      "doc_id": "33461df1-4449-4f73-8df6-a796843ac8d9"
+    },
+    "created_at": 1763643155.713076
+  },
+  {
+    "text": "shutdown\\",
+    "metadata": {
+      "source": "user",
+      "doc_id": "0700fe54-e5c9-4513-b68f-efcff18f8217"
+    },
+    "created_at": 1763643510.7447975
+  },
+  {
+    "text": "shutdowm",
+    "metadata": {
+      "source": "user",
+      "doc_id": "16715a0f-ab45-46ac-95a9-5b0d179ac59a"
+    },
+    "created_at": 1763643520.3607311
+  },
+  {
+    "text": "search for the president of india",
+    "metadata": {
+      "source": "user",
+      "doc_id": "f61763b8-fc03-41a5-b676-3404287fabbd"
+    },
+    "created_at": 1763643578.9128184
+  },
+  {
+    "text": "search for the president of india",
+    "metadata": {
+      "source": "user",
+      "doc_id": "17edb021-f853-4477-a8ab-9cb514165443"
+    },
+    "created_at": 1763643802.3445153
+  },
+  {
+    "text": "An array is a data structure consisting of a collection of elements (values or variables), of same memory size, each identified by at least one array index or ...",
+    "metadata": {
+      "source": "assistant",
+      "tool": "web_search",
+      "doc_id": "f7266a72-cf71-4ce6-bf87-31a5ac4d6359"
+    },
+    "created_at": 1763646782.6347497
+  },
+  {
+    "text": "An array in programming is a collection of elements (values) that can be of any data type, including strings, numbers, booleans, objects, and other arrays. It's like a container that holds multiple values.",
+    "metadata": {
+      "source": "assistant",
+      "doc_id": "b735cec7-e961-4880-809d-51acfaac2139"
+    },
+    "created_at": 1763646916.8935452
+  },
+  {
+    "text": "President – Cyril Ramaphosa · President – Lee Jae Myung · President – Salva Kiir Mayardit · King – Felipe VI ; President – Cyril Ramaphosa · President – Lee Jae ...",
+    "metadata": {
+      "source": "assistant",
+      "tool": "web_search",
+      "doc_id": "bdaaadca-0145-4744-8ee7-9cc9f0f4717d"
+    },
+    "created_at": 1763646932.04982
+  },
+  {
+    "text": "{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.3267609Z\",\"response\":\"This\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.3476638Z\",\"response\":\" appears\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.3672929Z\",\"response\":\" to\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.3867195Z\",\"response\":\" be\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.4061486Z\",\"response\":\" the\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.4251562Z\",\"response\":\" website\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.444948Z\",\"response\":\" of\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.4643457Z\",\"response\":\" Ray\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.4838106Z\",\"response\":\"yan\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.5032299Z\",\"response\":\" Sha\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.5226361Z\",\"response\":\"ikh\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.5421748Z\",\"response\":\",\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.5615259Z\",\"response\":\" a\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.5809036Z\",\"response\":\" software\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.6002449Z\",\"response\":\" developer\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.6196443Z\",\"response\":\" who\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.6391161Z\",\"response\":\" specializes\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.6585195Z\",\"response\":\" in\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.6778474Z\",\"response\":\" creating\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.6972953Z\",\"response\":\" beautiful\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.7166099Z\",\"response\":\",\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.7360197Z\",\"response\":\" high\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.7568447Z\",\"response\":\"-performance\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.7763983Z\",\"response\":\",\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.7960101Z\",\"response\":\" and\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.8154714Z\",\"response\":\" accessible\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.8349468Z\",\"response\":\" web\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.8544337Z\",\"response\":\" experiences\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.8738722Z\",\"response\":\" with\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.893365Z\",\"response\":\" a\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.9130068Z\",\"response\":\" focus\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.9325065Z\",\"response\":\" on\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.9520061Z\",\"response\":\" delightful\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.9714102Z\",\"response\":\" user\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:03.9907736Z\",\"response\":\" interface\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.0103243Z\",\"response\":\",\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.0297941Z\",\"response\":\" animation\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.0493102Z\",\"response\":\",\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.0687876Z\",\"response\":\" and\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.0883277Z\",\"response\":\" modern\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.1078327Z\",\"response\":\" technologies\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.1273295Z\",\"response\":\".\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.1468183Z\",\"response\":\" His\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.1662901Z\",\"response\":\" mission\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.1857371Z\",\"response\":\" is\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.2052454Z\",\"response\":\" to\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.2246342Z\",\"response\":\" bridge\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.2441085Z\",\"response\":\" the\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.2635645Z\",\"response\":\" gap\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.282964Z\",\"response\":\" between\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.3024273Z\",\"response\":\" design\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.321879Z\",\"response\":\" and\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.3412891Z\",\"response\":\" engineering\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.3607923Z\",\"response\":\" to\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.3815989Z\",\"response\":\" make\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.4012038Z\",\"response\":\" the\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.4207329Z\",\"response\":\" web\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.4402319Z\",\"response\":\" more\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.4598744Z\",\"response\":\" engaging\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.4793391Z\",\"response\":\" and\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.4988217Z\",\"response\":\" inclusive\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.5182974Z\",\"response\":\" for\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.5378037Z\",\"response\":\" everyone\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.5572917Z\",\"response\":\".\",\"done\":false}\n{\"model\":\"llama3.1\",\"created_at\":\"2025-11-20T13:56:04.5767628Z\",\"response\":\"\",\"done\":true,\"done_reason\":\"stop\",\"context\":[128006,882,128007,271,7896,1121,512,13922,1103,1232,364,2485,1129,11872,88,598,4317,31603,17777,518,364,2150,1232,364,30287,8503,29070,31603,518,364,72670,1232,364,10714,2206,4476,25922,358,11003,6366,11,2804,519,11,323,15987,3566,11704,449,264,5357,389,50189,3774,11,10571,11,323,6617,14645,13,3092,9131,374,311,14497,2955,323,15009,11,3339,279,3566,810,23387,323,29408,369,5127,13,35390,7224,66695,8925,3092,43680,62728,2206,16823,7184,4320,279,1217,304,14733,1495,320,2201,5507,6880,570,128009,128006,78191,128007,271,2028,8111,311,387,279,3997,315,13558,8503,29070,31603,11,264,3241,16131,889,46672,304,6968,6366,11,1579,58574,11,323,15987,3566,11704,449,264,5357,389,50189,1217,3834,11,10571,11,323,6617,14645,13,5414,9131,374,311,14497,279,13225,1990,2955,323,15009,311,1304,279,3566,810,23387,323,29408,369,5127,13],\"total_duration\":1362299300,\"load_duration\":71107800,\"prompt_eval_count\":107,\"prompt_eval_duration\":39624900,\"eval_count\":65,\"eval_duration\":1190899700}\n",
+    "metadata": {
+      "source": "assistant",
+      "doc_id": "78ce0ec5-0afd-4181-ab11-09ef5f1eeeff"
+    },
+    "created_at": 1763646964.5833614
+  },
+  {
+    "timestamp": 1763648287.5759306,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763648298.5032709,
+    "user": "shutdown",
+    "assistant": {
+      "text": "shutdown",
+      "corrected": "shutdown",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763648384.8649313,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763648503.8808265,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763648580.151956,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763648637.0145695,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650149.348302,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650194.0626767,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650249.5685754,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650326.5578747,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650332.7554843,
+    "user": "shutdowm",
+    "assistant": {
+      "text": "shutdowm",
+      "corrected": "shutdowm",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650338.7637756,
+    "user": "shutdown",
+    "assistant": {
+      "text": "shutdown",
+      "corrected": "shutdown",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650562.8529353,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650568.8587232,
+    "user": "shutdown",
+    "assistant": {
+      "text": "shutdown",
+      "corrected": "shutdown",
+      "intent": "unknown",
+      "intent_proba": {},
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650636.0931342,
+    "user": "what is ana array",
+    "assistant": {
+      "text": "what is ana array",
+      "corrected": "what is ana array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.05099588487074696,
+        "image_generation": 0.05529256304152027,
+        "none": 0.06933588591886734,
+        "ocr": 0.06648927160149777,
+        "open_app": 0.10221412959143657,
+        "personal_name": 0.05065694936673313,
+        "play_youtube": 0.07935338956778089,
+        "read_file": 0.09386549524897209,
+        "schedule_task": 0.049769045939138404,
+        "search": 0.12310010276004711,
+        "weather": 0.13831258153939777,
+        "web_scrape": 0.1206147005538617
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650640.0182486,
+    "user": "shutdown",
+    "assistant": {
+      "text": "shutdown",
+      "corrected": "shutdown",
+      "intent": "web_scrape",
+      "intent_proba": {
+        "create_report": 0.05397222342718407,
+        "image_generation": 0.05864682349729399,
+        "none": 0.07537344067037031,
+        "ocr": 0.07176974443543503,
+        "open_app": 0.11603427686428192,
+        "personal_name": 0.036505469598445674,
+        "play_youtube": 0.08693352879769782,
+        "read_file": 0.10482523061088199,
+        "schedule_task": 0.052602718039401905,
+        "search": 0.14205771547578155,
+        "weather": 0.05763324980099032,
+        "web_scrape": 0.14364557878223536
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650773.1653333,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650873.8288765,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763650975.9174457,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651104.0597374,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651288.20471,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651561.4502726,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651712.5697162,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651789.9477577,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651871.1393542,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763651879.6422317,
+    "user": "what is a queue",
+    "assistant": {
+      "text": "what is a queue",
+      "corrected": "what is a queue",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.05099588487074696,
+        "image_generation": 0.05529256304152027,
+        "none": 0.06933588591886734,
+        "ocr": 0.06648927160149777,
+        "open_app": 0.10221412959143657,
+        "personal_name": 0.05065694936673313,
+        "play_youtube": 0.07935338956778089,
+        "read_file": 0.09386549524897209,
+        "schedule_task": 0.049769045939138404,
+        "search": 0.12310010276004711,
+        "weather": 0.13831258153939777,
+        "web_scrape": 0.1206147005538617
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763652055.0834346,
+    "user": "what is an array",
+    "assistant": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763652073.3942733,
+    "user": "search the president of india",
+    "assistant": {
+      "text": "search the president of india",
+      "corrected": "search the president of india",
+      "intent": "search",
+      "intent_proba": {
+        "create_report": 0.04131204640997457,
+        "image_generation": 0.09776844228882886,
+        "none": 0.08721437382641385,
+        "ocr": 0.057131128425099036,
+        "open_app": 0.07578730417748133,
+        "personal_name": 0.029769994174252034,
+        "play_youtube": 0.06742776314919603,
+        "read_file": 0.10371288878966226,
+        "schedule_task": 0.04050202733008811,
+        "search": 0.20387914179151212,
+        "weather": 0.04921815218394041,
+        "web_scrape": 0.14627673745355135
+      },
+      "entities": [
+        [
+          "india",
+          "GPE"
+        ]
+      ]
+    }
+  },
+  {
+    "timestamp": 1763652230.2752886,
+    "user": "what is the current bitcoin price in INR",
+    "assistant": {
+      "text": "what is the current bitcoin price in INR",
+      "corrected": "what is the current bitcoin price in INR",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.04427342073761746,
+        "image_generation": 0.04775347338872683,
+        "none": 0.06431191368937325,
+        "ocr": 0.059276318884424896,
+        "open_app": 0.10187677343658091,
+        "personal_name": 0.04178144479722333,
+        "play_youtube": 0.07015213059787849,
+        "read_file": 0.0835264878404888,
+        "schedule_task": 0.043335659377386086,
+        "search": 0.11025548079324189,
+        "weather": 0.19294819908508026,
+        "web_scrape": 0.14050869737197766
+      },
+      "entities": [
+        [
+          "INR",
+          "ORG"
+        ]
+      ]
+    }
+  },
+  {
+    "timestamp": 1763653608.360901,
+    "user": "what is the current stock price of tesla in usd",
+    "assistant": {
+      "text": "what is the current stock price of tesla in usd",
+      "corrected": "what is the current stock price of tesla in usd",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.04369040481960639,
+        "image_generation": 0.07121906803733363,
+        "none": 0.07336974663385072,
+        "ocr": 0.05798668044089211,
+        "open_app": 0.09732081116550248,
+        "personal_name": 0.04122225188935686,
+        "play_youtube": 0.06818270437717527,
+        "read_file": 0.09144162913362362,
+        "schedule_task": 0.042929514263013294,
+        "search": 0.10333343247757021,
+        "weather": 0.1784518926065798,
+        "web_scrape": 0.13085186415549574
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763653667.4852812,
+    "user": "what is trending today in tech",
+    "assistant": {
+      "text": "what is trending today in tech",
+      "corrected": "what is trending today in tech",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.04733497708100232,
+        "image_generation": 0.0513021559889225,
+        "none": 0.06350353227204009,
+        "ocr": 0.061119300860766966,
+        "open_app": 0.11729603675597093,
+        "personal_name": 0.04646649802110165,
+        "play_youtube": 0.07226060401767695,
+        "read_file": 0.08440696258999925,
+        "schedule_task": 0.046322456649816324,
+        "search": 0.10937040241765456,
+        "weather": 0.18067235750241847,
+        "web_scrape": 0.11994471584263013
+      },
+      "entities": [
+        [
+          "today",
+          "DATE"
+        ]
+      ]
+    }
+  },
+  {
+    "timestamp": 1763653720.1890624,
+    "user": "which ai model have google launched recently",
+    "assistant": {
+      "text": "which ai model have google launched recently",
+      "corrected": "which ai model have google launched recently",
+      "intent": "search",
+      "intent_proba": {
+        "create_report": 0.05005300580165611,
+        "image_generation": 0.05426048206892539,
+        "none": 0.06916240741819382,
+        "ocr": 0.06597150051965485,
+        "open_app": 0.10456378444277839,
+        "personal_name": 0.03417994332506596,
+        "play_youtube": 0.07925274454447494,
+        "read_file": 0.09483127949946203,
+        "schedule_task": 0.04871844307985279,
+        "search": 0.2180343247090336,
+        "weather": 0.053348901520392615,
+        "web_scrape": 0.12762318307050954
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763653738.8163738,
+    "user": "shutdown",
+    "assistant": {
+      "text": "shutdown",
+      "corrected": "shutdown",
+      "intent": "web_scrape",
+      "intent_proba": {
+        "create_report": 0.05397222342718407,
+        "image_generation": 0.05864682349729399,
+        "none": 0.07537344067037031,
+        "ocr": 0.07176974443543503,
+        "open_app": 0.11603427686428192,
+        "personal_name": 0.036505469598445674,
+        "play_youtube": 0.08693352879769782,
+        "read_file": 0.10482523061088199,
+        "schedule_task": 0.052602718039401905,
+        "search": 0.14205771547578155,
+        "weather": 0.05763324980099032,
+        "web_scrape": 0.14364557878223536
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763653902.849823,
+    "user": "scrape this portfolio https://rayyanshaikh.me and tell me the social links u have found",
+    "assistant": {
+      "text": "scrape this portfolio https://rayyanshaikh.me and tell me the social links u have found",
+      "corrected": "scrape this portfolio https://rayyanshaikh.me and tell me the social links u have found",
+      "intent": "web_scrape",
+      "intent_proba": {
+        "create_report": 0.026471247513582298,
+        "image_generation": 0.02835811802742935,
+        "none": 0.036633083971367136,
+        "ocr": 0.03786820440986882,
+        "open_app": 0.04777554414101037,
+        "personal_name": 0.019080857174579125,
+        "play_youtube": 0.03981662249313019,
+        "read_file": 0.0658253952792949,
+        "schedule_task": 0.028940162380171136,
+        "search": 0.0975244834296103,
+        "weather": 0.029092425732514453,
+        "web_scrape": 0.5426138554474419
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763655930.4062111,
+    "user": "what is an array",
+    "assistant": "what is an array"
+  },
+  {
+    "timestamp": 1763655947.4373662,
+    "user": "current bitcoin price in inr",
+    "assistant": "current bitcoin price in inr"
+  },
+  {
+    "timestamp": 1763655983.1336477,
+    "user": "my wifi password is mango123",
+    "assistant": "my wifi password is mango123"
+  },
+  {
+    "timestamp": 1763655994.0764508,
+    "user": "what is my wifi password",
+    "assistant": "what is my wifi password"
+  },
+  {
+    "timestamp": 1763656115.5869024,
+    "user": "what is an array",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656116.9874198,
+    "user": "what is an array",
+    "assistant": "A data structure that stores a collection of elements, typically of the same data type, in a specific order. Each element in the array has an index or key associated with it, allowing for efficient access and manipulation."
+  },
+  {
+    "timestamp": 1763656159.0619104,
+    "user": "what is an array",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656165.889024,
+    "user": "what is an array",
+    "assistant": "An array is a collection of items that can be of any data type, including strings, integers, and objects. It is denoted by square brackets [] and elements are separated by commas."
+  },
+  {
+    "timestamp": 1763656189.449333,
+    "user": "what is the current price of bitcion in inr",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656192.5356503,
+    "user": "[TOOL:web_search]",
+    "assistant": "{'query': 'current bitcoin price in INR', 'provider': 'serper', 'results': [{'title': 'BTC to INR - Bitcoin Price in Indian Rupees', 'url': 'https://www.revolut.com/crypto/price/btc/inr/', 'snippet': '1 BTC currently costs ₹8,013,605.20, which represents a change of -0.93% in the last hour and a change of -0.18% in the last 24 hours. What is the circulating ...'}, {'title': 'BTC to INR: Bitcoin Price in Indian Rupee', 'url': 'https://www.coingecko.com/en/coins/bitcoin/inr', 'snippet': 'Bitcoin (BTC) is worth ₹7,994,942 today, which is a 0.6% decline from an hour ago and a 0.1% increase since yesterday. The value of BTC today is 11.8% lower ...'}, {'title': 'Calculate Bitcoin to Indian Rupee Live Today (BTC-INR)', 'url': 'https://coinmarketcap.com/currencies/bitcoin/btc/inr/', 'snippet': 'The BTC to INR conversion rate today is ₹8,141,413.93. This is a decrease of 0.88% in the last hour and an increase of 0.91% in the last 24 hours. The recent ...'}, {'title': 'Convert Bitcoin (BTC) to Indian Rupee (INR)', 'url': 'https://www.coinbase.com/converter/btc/inr', 'snippet': 'The exchange rate of Bitcoin is increasing. The current value of 1 BTC is ₹8,128,793.12 INR. In other words, to buy 5 Bitcoin, it would cost you ₹40,643,965.61 ...'}, {'title': 'BTC to INR | Buy Bitcoin in India at best price at ...', 'url': 'https://wazirx.com/exchange/BTC-INR', 'snippet': 'usdt/inr. △ 0.75%. ₹93.80 · btc/inr. △ 1.25%. ₹86,10,000 · eth/inr. ▽ 1.23%. ₹2,84,999.8 · xrp/inr. ▽ 1.47%. ₹199.9996 · shib/inr. ▽ 2.43%. ₹0.000800.'}], 'short_answer': '1 BTC currently costs ₹8,013,605.20, which represents a change of -0.93% in the last hour and a change of -0.18% in the last 24 hours. What is the circulating ...'}"
+  },
+  {
+    "timestamp": 1763656193.8741372,
+    "user": "what is the current price of bitcion in inr",
+    "assistant": "₹8,013,605.20"
+  },
+  {
+    "timestamp": 1763656209.7959876,
+    "user": "what is my wifi password",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656320.1263313,
+    "user": "remember that my project name is NagrikHelp",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656320.701708,
+    "user": "remember that my project name is NagrikHelp",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656329.717062,
+    "user": "what is my project name",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656331.853567,
+    "user": "what is my project name",
+    "assistant": "Your current project name is 'Project COLLABRY'."
+  },
+  {
+    "timestamp": 1763656340.9443002,
+    "user": "search: price of gold today in mumbai",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656343.42227,
+    "user": "[TOOL:web_search]",
+    "assistant": "{'query': 'gold price today in Mumbai', 'provider': 'serper', 'results': [{'title': 'Todays Gold Rate in Mumbai, 18, 22 & 24 Carat ...', 'url': 'https://www.goodreturns.in/gold-rates/mumbai.html', 'snippet': 'The price of gold in Mumbai today is ₹12,426 per gram for 24 karat gold, ₹11,390 per gram for 22 karat gold and ₹9,319 per gram for 18 karat gold (also ...'}, {'title': 'Gold Rate in Mumbai - LIVE Price of 22 & 24 Carat ...', 'url': 'https://groww.in/gold-rates/gold-rate-today-in-mumbai', 'snippet': \"Check today's gold rate in Mumbai and also get current 22 & 24 Carat gold price for 1 grams to 10 grams in mumbai along with historical price trends at ...\"}, {'title': 'Gold Rate in Mumbai Today ( as on 20 Nov, 2025) - Mint', 'url': 'https://www.livemint.com/gold-prices/mumbai', 'snippet': 'Gold Rate in Mumbai Today ( as on 20 Nov, 2025). 10g of 24k gold (99.9%). ₹1,23,7900.00. Gold Rate in Mumbai ...'}, {'title': \"Today's Gold Rate in Mumbai: 24K | 22K | 18K Per Gram\", 'url': 'https://timesofindia.indiatimes.com/business/gold-rates-today/gold-price-in-mumbai', 'snippet': 'As of today, the gold price in Mumbai is 12,426 per gram for 24K gold. The 22K variant costs 11,390 per gram, while 18K is priced at ₹9,319.'}, {'title': 'Gold Rate Today in Mumbai - LIVE Price of 24, 22 & 18 ...', 'url': 'https://www.angelone.in/gold-rates-today/gold-rate-in-mumbai', 'snippet': 'Today 24K, 22K & 18K Carat Gold Price Per Gram in Mumbai (INR) ; 1 gm. ₹12,628.68. ₹11,576.29 ; 8 gm. ₹1,01,029.48. ₹92,610.35 ; 10 gm. ₹1,26,286.85. ₹1,15,762.94.'}], 'short_answer': 'The price of gold in Mumbai today is ₹12,426 per gram for 24 karat gold, ₹11,390 per gram for 22 karat gold and ₹9,319 per gram for 18 karat gold (also ...'}"
+  },
+  {
+    "timestamp": 1763656349.7064216,
+    "user": "search: price of gold today in mumbai",
+    "assistant": "The current price of gold in Mumbai is ₹12,426 per gram for 24-karat gold, ₹11,390 per gram for 22-karat gold and ₹9,319 per gram for 18-karat gold."
+  },
+  {
+    "timestamp": 1763656358.9464586,
+    "user": "scrape https://example.com",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656360.8701353,
+    "user": "[TOOL:web_scrape]",
+    "assistant": "{'url': 'https://example.com', 'content': 'Example Domain\\nExample Domain\\nThis domain is for use in documentation examples without needing permission. Avoid use in operations.\\nLearn more'}"
+  },
+  {
+    "timestamp": 1763656362.080013,
+    "user": "scrape https://example.com",
+    "assistant": "https://example.com"
+  },
+  {
+    "timestamp": 1763656369.0288267,
+    "user": "give summary of previous conversation",
+    "assistant": ""
+  },
+  {
+    "timestamp": 1763656370.767875,
+    "user": "[TOOL:web_search]",
+    "assistant": "{'query': 'previous conversation', 'provider': 'serper', 'results': [{'title': '11 Alternative Ways To Say “As per Our Conversation” at ...', 'url': 'https://www.indeed.com/career-advice/career-development/as-per-our-conversation', 'snippet': 'What does \"as per our conversation\" mean? \"As per our conversation\" means that you\\'re addressing a previous discussion you had with a colleague.'}, {'title': '30 Unique Ways to Say As Per Our Conversation', 'url': 'https://www.lettrlabs.com/post/30-unique-ways-to-say-as-per-our-conversation', 'snippet': \"Some ways to say 'as per our conversation' include: 'In accordance with our discussion', 'Based on what we talked about', 'As we discussed earlier', and ' ...\"}, {'title': 'Any way to have chat GPT read and use previous ...', 'url': 'https://www.reddit.com/r/ChatGPTPro/comments/1gutpw5/any_way_to_have_chat_gpt_read_and_use_previous/', 'snippet': \"I've been recently looking into a way to have chatgpt have some kind of continuity, in the sense that I can continue previous conversations with it in new ...\"}, {'title': 'Per Our Conversation | When to Use + 11 Alternative Phrases', 'url': 'https://blog.sendspark.com/per-our-conversation', 'snippet': '\"Per our conversation\" is a polite phrase used in follow-up emails after a meeting to reference a previous discussion, like after a sales call.'}, {'title': 'Is it correct to say “as per our conversation”?', 'url': 'https://www.quora.com/Is-it-correct-to-say-as-per-our-conversation', 'snippet': 'Yes, but many English speakers prefer to drop the “as” part of it. From Merriam-Webster online: << Is It Grammatically Correct to Say as per ...'}], 'short_answer': 'What does \"as per our conversation\" mean? \"As per our conversation\" means that you\\'re addressing a previous discussion you had with a colleague.'}"
+  },
+  {
+    "timestamp": 1763656374.734707,
+    "user": "give summary of previous conversation",
+    "assistant": "The phrase 'as per our conversation' means addressing a previous discussion you had with a colleague."
+  },
+  {
+    "timestamp": 1763656898.3225527,
+    "user": "what is an array",
+    "assistant": "what is an array",
+    "meta": {
+      "text": "what is an array",
+      "corrected": "what is an array",
+      "intent": "weather",
+      "intent_proba": {
+        "create_report": 0.049615279902355716,
+        "image_generation": 0.10452305913687478,
+        "none": 0.06673221049390793,
+        "ocr": 0.06440033142934333,
+        "open_app": 0.09742270465222946,
+        "personal_name": 0.048388698413419265,
+        "play_youtube": 0.07644742362092677,
+        "read_file": 0.08926012201517673,
+        "schedule_task": 0.0487043607693768,
+        "search": 0.11629668531075973,
+        "weather": 0.12404087474888788,
+        "web_scrape": 0.11416824950674175
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763656907.1776621,
+    "user": "what is an array",
+    "assistant": "Please provide a query for the web search.",
+    "meta": {
+      "source": "assistant"
+    }
+  },
+  {
+    "timestamp": 1763656940.4222546,
+    "user": "whats the current price of gold in india",
+    "assistant": "whats the current price of gold in india",
+    "meta": {
+      "text": "whats the current price of gold in india",
+      "corrected": "whats the current price of gold in india",
+      "intent": "web_scrape",
+      "intent_proba": {
+        "create_report": 0.04033792200089321,
+        "image_generation": 0.10263590891405769,
+        "none": 0.08732539807885316,
+        "ocr": 0.05553856132041007,
+        "open_app": 0.10733079127128617,
+        "personal_name": 0.029646732028385213,
+        "play_youtube": 0.0650883432706642,
+        "read_file": 0.10171509110439009,
+        "schedule_task": 0.039882897244566944,
+        "search": 0.10069122384713736,
+        "weather": 0.09673240611516724,
+        "web_scrape": 0.17307472480418865
+      },
+      "entities": [
+        [
+          "india",
+          "GPE"
+        ]
+      ]
+    }
+  },
+  {
+    "timestamp": 1763656950.4555848,
+    "user": "whats the current price of gold in india",
+    "assistant": "{\"tool\": \"serper\", \"answer\": \"The current price of gold in India is around ₹12,426 per gram for 24 karat gold and ₹11,390 per gram for 22 karat gold.\"}",
+    "meta": {
+      "source": "assistant"
+    }
+  },
+  {
+    "timestamp": 1763656965.9829507,
+    "user": "whats my wifi password",
+    "assistant": "whats my wifi password",
+    "meta": {
+      "text": "whats my wifi password",
+      "corrected": "whats my wifi password",
+      "intent": "search",
+      "intent_proba": {
+        "create_report": 0.05283877626287179,
+        "image_generation": 0.0571794128217258,
+        "none": 0.07245003378901173,
+        "ocr": 0.0691959463624994,
+        "open_app": 0.10775747661086328,
+        "personal_name": 0.094240403726196,
+        "play_youtube": 0.08251347022140565,
+        "read_file": 0.0981872594093609,
+        "schedule_task": 0.05156005272817317,
+        "search": 0.12964281058810906,
+        "weather": 0.05579194221916383,
+        "web_scrape": 0.12864241526061937
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763656969.5804522,
+    "user": "whats my wifi password",
+    "assistant": "Check file existence",
+    "meta": {
+      "source": "assistant"
+    }
+  },
+  {
+    "timestamp": 1763657012.4869742,
+    "user": "remember that my wifi password of college is abc123",
+    "assistant": "remember that my wifi password of college is abc123",
+    "meta": {
+      "text": "remember that my wifi password of college is abc123",
+      "corrected": "remember that my wifi password of college is abc123",
+      "intent": "search",
+      "intent_proba": {
+        "create_report": 0.049902404598309684,
+        "image_generation": 0.08917403619353623,
+        "none": 0.08144107096053232,
+        "ocr": 0.06452354917296958,
+        "open_app": 0.09748457015701383,
+        "personal_name": 0.06833600582189933,
+        "play_youtube": 0.0760817689384484,
+        "read_file": 0.10409856707557379,
+        "schedule_task": 0.048890892351998526,
+        "search": 0.13975797233813272,
+        "weather": 0.06967001058700895,
+        "web_scrape": 0.1106391518045767
+      },
+      "entities": []
+    }
+  },
+  {
+    "timestamp": 1763657019.4359462,
+    "user": "remember that my wifi password of college is abc123",
+    "assistant": "The write_file() function doesn't support a file_name parameter.",
+    "meta": {
+      "source": "assistant"
+    }
+  },
+  {
+    "timestamp": 1763657600.2468474,
+    "user": "open https://rayyanshaikh.me",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763657621.137156,
+    "user": "show links",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763657773.8906796,
+    "user": "open https://rayyanshaikh.me",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763657993.6412575,
+    "user": "can you open this portfolio: https://rayyanshaikh.me",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658055.9700305,
+    "user": "have u got more social links maybe stored in the footer section",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658096.362325,
+    "user": "whats the contact information u have found after scraping the portfolio",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658566.6319466,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658590.024926,
+    "user": "what is the current price of silver in india",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658624.3184876,
+    "user": "open https://rayyanshaikh.me",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658651.9424372,
+    "user": "can u retrieve his email id",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658671.3443859,
+    "user": "can u fetch his servis from the poirtfolio",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658886.4866414,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658908.5031848,
+    "user": "what is the current price of uranium in inr",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658926.4644017,
+    "user": "what is the current price of gold in india",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763658958.998154,
+    "user": "open https://rayyanshaikh.me",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659070.9269018,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659085.2863338,
+    "user": "what is the current price of bitcoin in inr",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659184.5591908,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659201.646625,
+    "user": "what is the current price of bitcoin in inr",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659367.4685655,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659443.354485,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659458.725519,
+    "user": "what is the current price of gold in india",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659673.1658807,
+    "user": "what is the current price of uranium in inr",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659681.7386684,
+    "user": "yes",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659795.684237,
+    "user": "what is an array",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659812.211578,
+    "user": "what is the current price of bitcoin",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659816.4485235,
+    "user": "what is the current price of bitcoin",
+    "assistant": "The live Bitcoin price today is $91186.14 USD with a 24-hour trading volume of $85952978896.25 USD. We update our BTC to USD price in real-time.",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659834.8590066,
+    "user": "what is current price of gold in india",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659839.3700042,
+    "user": "what is current price of gold in india",
+    "assistant": "The price of gold in India today is ₹12,426 per gram for 24 karat gold, ₹11,390 per gram for 22 karat gold and ₹9,319 per gram for 18 karat gold (also called ...",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659879.0579045,
+    "user": "open https://rayyanshaikh.me and tell what u have found",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659890.6828747,
+    "user": "open https://rayyanshaikh.me a",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763659894.4028027,
+    "user": "open https://rayyanshaikh.me",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660012.3157256,
+    "user": "i have 4 pets",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660068.7876964,
+    "user": "yes it hectic but anyways can you tell me what is the current famous gpu manufacturers",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660092.3225186,
+    "user": "by the way can you tell me how many pets i have",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660555.9871488,
+    "user": "i am happy to share that my dog just gave birth to 3 babies",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660562.6333194,
+    "user": "i am happy to share that my dog just gave birth to 3 babies",
+    "assistant": "Congratulations on the new additions! Three little puppies, I presume?",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660590.8884275,
+    "user": "anyways , what is a graph",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660596.122116,
+    "user": "anyways , what is a graph",
+    "assistant": "A graph, in mathematics and computer science, is a non-linear collection of nodes or vertices connected by edges. It's often used to represent relationships between objects or data points.",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660629.1450565,
+    "user": "by the way can you tell how many babies my dog gave birth to?",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660633.0447123,
+    "user": "by the way can you tell how many babies my dog gave birth to?",
+    "assistant": "Dogs do not give birth to babies. Babies are human offspring. If your dog has given birth, it's likely to be a litter of puppies.",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660659.2096589,
+    "user": "yes i know that but how many puppies did my dog gave birth to?",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660664.7889423,
+    "user": "yes i know that but how many puppies did my dog gave birth to?",
+    "assistant": "I don't have information about your personal life or the number of puppies your dog has given birth to. I can help with general information or provide assistance if you need help with something else.",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763660981.8266706,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661137.1843708,
+    "user": "You: I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661137.36032,
+    "user": "COLLABRY: Error while processing: cannot access local variable 'buffer' where it is not associated with a value",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661200.8635848,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661270.6891713,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661333.7614946,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661385.3199003,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661447.5763538,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  },
+  {
+    "timestamp": 1763661487.0871503,
+    "user": "I am happy to share that my dog just gave birth to 5 babies.",
+    "assistant": "",
+    "meta": {}
+  }
+]
