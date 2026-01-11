@@ -22,21 +22,7 @@ else:
 
 CONFIG = {
     # ==============================================================================
-    # GOOGLE GEMINI CONFIGURATION (Primary AI Engine)
-    # ==============================================================================
-    # Google AI Studio API key (get from: https://aistudio.google.com/app/apikey)
-    "gemini_api_key": os.environ.get("GEMINI_API_KEY", ""),
-    
-    # Gemini model selection
-    # Options: gemini-2.0-flash-lite (fast, stable), gemini-1.5-pro (more capable)
-    "gemini_model": os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-lite"),
-    
-    # Gemini generation parameters
-    "gemini_max_tokens": int(os.environ.get("GEMINI_MAX_TOKENS", "8192")),
-    "gemini_timeout": int(os.environ.get("GEMINI_TIMEOUT", "120")),
-    
-    # ==============================================================================
-    # LEGACY OLLAMA CONFIGURATION (Deprecated - kept for fallback)
+    # OLLAMA CONFIGURATION (Primary AI Engine)
     # ==============================================================================
     # Model name to use (change to 'mistral' or 'llama3.1' as installed)
     "llm_model": os.environ.get("OLLAMA_MODEL", os.environ.get("COLLABRY_LLM_MODEL", "llama3.1")),

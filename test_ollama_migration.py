@@ -1,8 +1,8 @@
 """
-Test script to verify Gemini migration is working correctly.
+Test script to verify Ollama migration is working correctly.
 
 Run this script to test all major components:
-- Gemini service initialization
+- Ollama service initialization
 - Intent classification
 - Entity extraction
 - Text generation
@@ -21,50 +21,41 @@ def test_config():
     print("=" * 70)
     print("TEST 1: Configuration")
     print("=" * 70)
-    
+
     try:
         from config import CONFIG
-        
-        # Check Gemini config
-        assert "gemini_api_key" in CONFIG, "Missing gemini_api_key in config"
-        assert "gemini_model" in CONFIG, "Missing gemini_model in config"
-        
-        # Check if API key is set
-        api_key = CONFIG["gemini_api_key"]
-        if not api_key or api_key == "your_gemini_api_key_here":
-            print("❌ FAILED: GEMINI_API_KEY not set in .env file")
-            print("   Please set your API key: https://aistudio.google.com/app/apikey")
-            return False
-        
-        print(f"✅ Configuration loaded successfully")
-        print(f"   Model: {CONFIG['gemini_model']}")
-        print(f"   API Key: {api_key[:10]}...")
+
+        # Check Ollama config
+        assert "llm_model" in CONFIG, "Missing llm_model in config"
+        assert "ollama_host" in CONFIG, "Missing ollama_host in config"
+
+        print("✅ Configuration loaded successfully"        print(f"   Model: {CONFIG['llm_model']}")
+        print(f"   Host: {CONFIG['ollama_host']}")
         return True
-        
+
     except Exception as e:
         print(f"❌ FAILED: {e}")
         return False
 
 
-def test_gemini_service():
-    """Test Gemini service initialization."""
+def test_ollama_service():
+    """Test Ollama service initialization."""
     print("\n" + "=" * 70)
-    print("TEST 2: Gemini Service")
+    print("TEST 2: Ollama Service")
     print("=" * 70)
-    
+
     try:
-        from core.gemini_service import create_gemini_service
-        
-        gemini = create_gemini_service()
-        print("✅ Gemini service initialized")
-        
+        from core.ollama_service import create_ollama_service
+
+        ollama = create_ollama_service()
+        print("✅ Ollama service initialized")
+
         # Test basic generation
-        response = gemini.generate("Say 'Hello, Gemini!' in one short sentence.")
-        print(f"✅ Basic generation works")
-        print(f"   Response: {response.text[:100]}...")
-        
+        response = ollama.generate("Say 'Hello, Ollama!' in one short sentence.")
+        print("✅ Basic generation works"        print(f"   Response: {response[:100]}...")
+
         return True
-        
+
     except Exception as e:
         print(f"❌ FAILED: {e}")
         import traceback
@@ -163,21 +154,20 @@ def test_nlp_pipeline():
 def test_local_llm():
     """Test LocalLLM interface."""
     print("\n" + "=" * 70)
-    print("TEST 6: LocalLLM (Gemini-powered)")
+    print("TEST 6: LocalLLM (Ollama-powered)")
     print("=" * 70)
-    
+
     try:
         from core.local_llm import create_llm
         from config import CONFIG
-        
+
         llm = create_llm(CONFIG)
         response = llm.invoke("What is 2+2? Answer in one sentence.")
-        
-        print(f"✅ LocalLLM works (backward compatibility)")
-        print(f"   Response: {response[:100]}...")
-        
+
+        print("✅ LocalLLM works (backward compatibility)"        print(f"   Response: {response[:100]}...")
+
         return True
-        
+
     except Exception as e:
         print(f"❌ FAILED: {e}")
         import traceback
@@ -188,19 +178,19 @@ def test_local_llm():
 def main():
     """Run all tests."""
     print("\n" + "=" * 70)
-    print("COLLABRY AI ENGINE - GEMINI MIGRATION TEST SUITE")
+    print("COLLABRY AI ENGINE - OLLAMA MIGRATION TEST SUITE")
     print("=" * 70)
     print()
-    
+
     tests = [
         test_config,
-        test_gemini_service,
+        test_ollama_service,
         test_intent_classification,
         test_entity_extraction,
         test_nlp_pipeline,
         test_local_llm,
     ]
-    
+
     results = []
     for test_func in tests:
         try:
@@ -209,31 +199,31 @@ def main():
         except Exception as e:
             print(f"❌ TEST CRASHED: {e}")
             results.append(False)
-    
+
     # Summary
     print("\n" + "=" * 70)
     print("TEST SUMMARY")
     print("=" * 70)
-    
+
     passed = sum(results)
     total = len(results)
-    
+
     print(f"\nTests Passed: {passed}/{total}")
-    
+
     if passed == total:
-        print("\n🎉 ALL TESTS PASSED! Gemini migration successful.")
+        print("\n🎉 ALL TESTS PASSED! Ollama migration successful.")
         print("\nNext steps:")
         print("1. Start the server: python run_server.py")
         print("2. Test with frontend or curl")
-        print("3. Monitor API usage at: https://aistudio.google.com")
+        print("3. Make sure Ollama is running: ollama serve")
         return 0
     else:
         print(f"\n⚠️ {total - passed} test(s) failed.")
         print("\nTroubleshooting:")
-        print("1. Check GEMINI_API_KEY is set in .env")
-        print("2. Verify internet connection (Gemini is cloud-based)")
+        print("1. Check Ollama is installed and running")
+        print("2. Verify model is pulled: ollama pull llama3.1")
         print("3. Check logs for detailed error messages")
-        print("4. See GEMINI_MIGRATION.md for help")
+        print("4. See OLLAMA_MIGRATION.md for help")
         return 1
 
 
