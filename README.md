@@ -157,6 +157,25 @@ Access the API:
 - **Health Check**: http://localhost:8000/health
 - **Root**: http://localhost:8000/
 
+### Production Deployment
+
+For hosting platforms (Render, Heroku, Railway, etc.), use the simplified production script:
+
+```bash
+python start_production.py
+```
+
+This automatically:
+- Uses the `PORT` environment variable set by hosting platforms
+- Binds to `0.0.0.0` for external access
+- Optimized for production (no development features)
+
+**Hosting Configuration:**
+- **Build Command**: `pip install -r requirements.txt`
+- **Start Command**: `python start_production.py`
+
+📖 **See [DEPLOYMENT.md](DEPLOYMENT.md) for complete hosting setup**
+
 ### Testing
 
 **FastAPI Integration Tests** (requires server running):

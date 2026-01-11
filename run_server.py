@@ -4,7 +4,8 @@ FastAPI Server Startup Script
 Starts the Collabry AI Core FastAPI server.
 
 Usage:
-    python run_server.py
+    python run_server.py                    # Development mode
+    python run_server.py --production       # Production mode (for hosting)
     python run_server.py --host 0.0.0.0 --port 8000
     python run_server.py --reload
 """
@@ -98,6 +99,11 @@ if __name__ == "__main__":
         help="Enable auto-reload for development"
     )
     parser.add_argument(
+        "--production",
+        action="store_true",
+        help="Production mode - simplified startup for hosting platforms"
+    )
+    parser.add_argument(
         "--log-level",
         default="info",
         choices=["critical", "error", "warning", "info", "debug"],
@@ -106,6 +112,24 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     
+    # Production mode for hosting platforms (Render, Heroku, etc.)
+    if args.production or os.environ.get("RENDER") or os.environ.get("DYNO"):
+        print("🏭 Production mode detected - starting simplified server for hosting platform")
+        
+        # Get port from environment (required for hosting)
+        port = int(os.environ.get("PORT", 8000))
+        print(f"📡 Hosting platform detected, using PORT: {port}")
+        
+        # Simple startup for hosting - no process killing, no complex logic
+        uvicorn.run(
+            "server.main:app",
+            host="0.0.0.0",
+            port=port,
+            log_level="info"
+        )
+        sys.exit(0)
+    
+    # Development mode with full features
     # Determine port (hosting platforms like Render/Heroku set PORT env var)
     port = args.port
     if os.environ.get("PORT"):
