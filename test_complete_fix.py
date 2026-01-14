@@ -1,5 +1,5 @@
 """
-Complete test for all gemini-2.5-flash fixes
+Complete test for all Hugging Face migration fixes
 
 Tests:
 1. LocalLLM generation (str vs object)
@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 print("=" * 70)
-print("COMPLETE FIX VERIFICATION - GEMINI 2.5-FLASH")
+print("COMPLETE FIX VERIFICATION - HUGGING FACE")
 print("=" * 70)
 
 # Test 1: LocalLLM
@@ -39,7 +39,7 @@ except Exception as e:
 print("\n[TEST 2] Intent Classification (dict/object handling)")
 print("-" * 70)
 try:
-    from core.gemini_intent import IntentClassifier
+    from core.intent_classifier import IntentClassifier
     
     clf = IntentClassifier()
     result = clf.classify("Can you help me study for my math exam?")

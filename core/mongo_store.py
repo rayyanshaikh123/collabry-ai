@@ -56,6 +56,8 @@ class MongoMemoryStore:
     def _connect(self):
         """Establish MongoDB connection and create indexes."""
         try:
+            logger.info(f"Connecting to MongoDB: {self.mongo_uri}")
+
             self._client = MongoClient(
                 self.mongo_uri,
                 serverSelectionTimeoutMS=5000,
@@ -63,7 +65,7 @@ class MongoMemoryStore:
             )
             # Test connection
             self._client.admin.command("ping")
-            
+
             self._db = self._client[self.db_name]
             self._collection = self._db[self.collection_name]
 
@@ -78,6 +80,47 @@ class MongoMemoryStore:
                 [("user_id", ASCENDING), ("thread_id", ASCENDING), ("timestamp", ASCENDING)]
             )
             self._collection.create_index([("timestamp", DESCENDING)])
+
+            self._connected = True
+            logger.info(f"✓ MongoDB connection established: {self.db_name}.{self.collection_name}")
+
+        except Exception as e:
+            logger.error(f"Failed to connect to MongoDB: {e}")
+
+            # Try fallback to local MongoDB if Atlas connection fails
+            if "mongodb+srv://" in self.mongo_uri:
+                logger.info("Attempting fallback to local MongoDB...")
+                try:
+                    self._client = MongoClient(
+                        "mongodb://localhost:27017",
+                        serverSelectionTimeoutMS=2000,
+                        connectTimeoutMS=2000,
+                    )
+                    self._client.admin.command("ping")
+
+                    self._db = self._client[self.db_name]
+                    self._collection = self._db[self.collection_name]
+
+                    try:
+                        self._fs = GridFS(self._db)
+                    except Exception:
+                        self._fs = None
+
+                    # Create indexes
+                    self._collection.create_index(
+                        [("user_id", ASCENDING), ("thread_id", ASCENDING), ("timestamp", ASCENDING)]
+                    )
+                    self._collection.create_index([("timestamp", DESCENDING)])
+
+                    self._connected = True
+                    logger.warning("⚠️ Using local MongoDB fallback. Some features may not work.")
+                    return
+
+                except Exception as fallback_e:
+                    logger.error(f"Local MongoDB fallback also failed: {fallback_e}")
+
+            self._connected = False
+            raise ConnectionFailure(f"MongoDB connection failed: {e}")
 
             self._connected = True
             logger.info(f"✓ MongoDB connected: {self.db_name}.{self.collection_name}")

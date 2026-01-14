@@ -1,84 +1,16 @@
 """
-Unified Gemini Service for Collabry AI Engine
+DEPRECATED: Gemini integration removed.
 
-ARCHITECTURE:
-------------
-This service replaces multiple specialized models with a single Gemini-powered pipeline:
-
-OLD ARCHITECTURE:
-- Ollama (Llama 3.1) → Chat/Generation
-- spaCy en_core_web_sm → NER/Entity Extraction
-- Custom Intent Classifier → Intent Routing
-- FAISS + all-MiniLM-L6-v2 → Vector Search (PRESERVED)
-
-NEW ARCHITECTURE:
-- Google Gemini (1.5 Flash/Pro) → Unified reasoning engine for:
-  * Chat and generation
-  * Intent classification (replaces custom classifier)
-  * Entity extraction (replaces spaCy)
-  * Semantic parsing and routing
-- FAISS + all-MiniLM-L6-v2 → Vector Search (PRESERVED)
-
-REQUEST FLOW:
-User Query → FAISS Retrieval → Gemini (single call) → Structured Response
-
-BENEFITS:
-- Single API call per request (reduced latency)
-- No local model dependencies (Ollama, spaCy)
-- Cost-free hosting on Google AI Studio
-- Better reasoning and context understanding
-- Structured outputs with JSON mode
+This module previously provided a Google Gemini client. The project
+has been migrated to use the Hugging Face Inference API. Importing
+this module will raise an informative ImportError to guide developers
+to the new `huggingface_service.py` implementation.
 """
 
-import os
-import json
-import logging
-from typing import Any, Dict, List, Optional, Union
-from dataclasses import dataclass
-import time
-
-logger = logging.getLogger(__name__)
-
-# Gemini SDK
-try:
-    from google import genai
-    from google.genai import types
-    GEMINI_AVAILABLE = True
-except ImportError:
-    logger.warning("google-genai not installed. Install with: pip install google-genai")
-    GEMINI_AVAILABLE = False
-
-
-@dataclass
-class IntentResult:
-    """Structured intent classification result"""
-    intent: str  # chat, qa, summarize, explain, analyze, plan, generate
-    confidence: float  # 0.0 - 1.0
-    entities: Dict[str, Any]  # extracted entities
-    tool_calls: List[str]  # suggested tools to invoke
-    reasoning: str  # explanation of classification
-
-
-@dataclass
-class GeminiResponse:
-    """Unified response from Gemini"""
-    text: str
-    intent: Optional[IntentResult] = None
-    metadata: Optional[Dict[str, Any]] = None
-    tokens_used: Optional[int] = None
-
-
-class GeminiService:
-    """
-    Unified Gemini client for all AI operations.
-    
-    Replaces:
-    - LocalLLM (Ollama)
-    - IntentClassifier
-    - spaCy NLP pipeline
-    
-    Single point of integration with Google Gemini API.
-    """
+raise ImportError(
+    "gemini_service.py has been removed. Use core.huggingface_service.create_hf_service() "
+    "and set HUGGINGFACE_API_KEY in your environment."
+)
     
     def __init__(
         self,

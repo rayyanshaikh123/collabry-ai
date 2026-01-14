@@ -158,15 +158,14 @@ WHEN TO USE TOOLS:
 # =========================
 
 COURSE_FORMATTING_RULES = """
-When returning courses from web_search:
+When returning courses from web_search for Studio/artifact consumption:
 
-- Each course must be on its own line
-- Format as a markdown link
-- Append platform, rating, and price
+- The final output MUST be a single-line JSON object with `tool: null` and an `answer` containing a stringified JSON payload. The payload must be an object with `artifact_type: "courses"` and a `data` array of course objects.
+- Each course object MUST include `title` and `url`. Optional: `platform`, `rating`, `price`, `description`.
+- Provide 5-8 courses. Do NOT include markdown or extra explanatory text.
 
-Example:
-[Data Structures](https://example.com)
-- Platform: Coursera | Rating: 4.8/5 | Price: Free
+Example final object (single line):
+{"tool": null, "answer": "{\"artifact_type\":\"courses\",\"data\":[{\"title\":\"Data Structures\",\"url\":\"https://example.com\",\"platform\":\"Coursera\",\"rating\":\"4.8/5\",\"price\":\"Free\"}]}"}
 """
 
 
@@ -221,22 +220,43 @@ Explanation: The provided source(s) do not contain sufficient factual detail to 
 
 
 QUIZ_ARTIFACT_PROMPT = """
-When returning a quiz that will be saved as a Studio artifact, follow these rules in addition to the QUIZ FORMATTING rules:
+When returning a quiz intended to be saved or displayed as a Studio artifact, output a strict JSON artifact.
 
-- Produce a JSON-safe payload embedded in the `answer` string that can be parsed by the backend. The frontend expects either:
-  - a saved quiz object when the backend saves it (includes `_id` and `questions` array), or
-  - a plain list of questions when not saved (use the Markdown format above inside `answer`).
+- The final response MUST be a single-line JSON object with `tool: null` and an `answer` field containing a stringified JSON payload with this shape:
+  {"artifact_type":"quiz","data": {"questions": [{"question":"...","options":["A","B","C","D"],"correctAnswer":1,"explanation":"... (Source: filename)"}, ...]}}
 
-- Validation rules (must be enforced by the generator):
-  1. Each question has exactly 4 non-empty options.
-  2. The `Answer` letter maps to one of the provided options.
-  3. Each `Explanation` includes a short citation of the source used (filename or short name).
-  4. Do NOT reference or quote the chat conversation — use ONLY the provided source(s).
+- Requirements:
+  1. `questions` must be an array of exactly N questions (user-specified). For the UI, 5 questions is common.
+  2. Each question object MUST contain:
+     - `question` (string)
+     - `options` (array of 4 non-empty strings)
+     - `correctAnswer` (integer index 0-3 pointing to the correct option)
+     - `explanation` (short string citing the source, e.g., "(Source: Arrays.pdf)")
+  3. Do NOT include any markdown, headings, or extra text; the `answer` field must be a JSON string only.
+  4. Use ONLY the explicit sources provided in the generation request (do NOT use chat conversation content).
 
-- If any validation rule fails, return a single-line JSON object with `tool: null` and an `answer` that explains the validation failure and which questions (by index) failed validation. Example:
-  {"tool": null, "answer": "Validation failed: Question 2 — missing options. Please provide full source materials."}
+- On validation failure (missing fields, wrong option count, invalid correctAnswer index), return a single-line JSON validation response:
+  {"tool": null, "answer": "Validation failed: Question 2 — options must be 4 non-empty strings"}
 
-This ensures the backend/frontend can reliably save and display the quiz artifact in Studio.
+This strict format lets the backend parse the quiz artifact and frontend `QuizCard` render it directly.
+"""
+
+
+COURSE_ARTIFACT_PROMPT = """
+When returning a course list intended to be saved or displayed as Studio artifacts, follow these rules:
+
+- Output MUST be a single-line JSON object as the final response with the following shape inside the `answer` field (stringified JSON):
+  {"artifact_type": "courses", "data": [{"title":"...","url":"...","platform":"...","rating":"4.7/5","price":"Free","description":"..."}, ...]}
+
+- `data` must be an array of 5-8 course objects.
+- Each course object MUST include: `title` (string), `url` (string). Optional fields: `platform`, `rating`, `price`, `description`.
+- Do NOT include markdown or any additional explanatory text. The outer response MUST be a single-line JSON object only, for example:
+  {"tool": null, "answer": "{\"artifact_type\": \"courses\", \"data\": [{\"title\":\"Data Structures\", \"url\":\"https://...\", \"platform\":\"Coursera\", \"rating\":\"4.8/5\", \"price\":\"Free\"}]}"}
+
+- Use ONLY web_search results (do NOT rely on conversation context). Cite sources in logs only; do not add citations to the `answer` JSON.
+
+If validation fails (wrong fields, fewer than 5 courses, invalid URLs), return a single-line JSON validation response:
+  {"tool": null, "answer": "Validation failed: courses must be array of 5-8 items with title and url"}
 """
 
 

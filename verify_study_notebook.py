@@ -29,17 +29,17 @@ print("=" * 80)
 print("\n[1] CONFIGURATION CHECK")
 print("-" * 80)
 
-gemini_key = os.environ.get("GEMINI_API_KEY")
-gemini_model = os.environ.get("GEMINI_MODEL")
+hf_key = os.environ.get("HUGGINGFACE_API_KEY")
+hf_model = os.environ.get("HUGGINGFACE_MODEL")
 mongo_uri = os.environ.get("MONGO_URI")
 
-if gemini_key:
-    masked_key = gemini_key[:10] + "..." + gemini_key[-4:]
-    print(f"✅ GEMINI_API_KEY: {masked_key}")
+if hf_key:
+    masked_key = hf_key[:10] + "..." + hf_key[-4:]
+    print(f"✅ HUGGINGFACE_API_KEY: {masked_key}")
 else:
-    print("❌ GEMINI_API_KEY: Not set!")
-    
-print(f"✅ GEMINI_MODEL: {gemini_model}")
+    print("❌ HUGGINGFACE_API_KEY: Not set!")
+
+print(f"✅ HUGGINGFACE_MODEL: {hf_model}")
 
 if mongo_uri:
     # Mask password in URI
@@ -58,15 +58,15 @@ else:
 print("\n[2] AI ENGINE CORE FUNCTIONALITY")
 print("-" * 80)
 
-# Test Gemini Service
+# Test HuggingFace LLM service + LocalLLM
 try:
     from config import CONFIG
-    from core.gemini_service import create_gemini_service
+    from core.huggingface_service import create_hf_service
     
-    gemini = create_gemini_service(CONFIG)
-    print(f"✅ GeminiService initialized: {gemini.model_name}")
+    hf = create_hf_service(model=CONFIG.get("llm_model"))
+    print(f"✅ HuggingFace service initialized: {hf.model}")
 except Exception as e:
-    print(f"❌ GeminiService failed: {e}")
+    print(f"❌ HuggingFace service failed: {e}")
 
 # Test LocalLLM
 try:
@@ -139,7 +139,7 @@ print("  2. User uploads document → Backend calls POST /ai/upload")
 print("  3. AI engine processes document in background (RAG ingestion)")
 print("  4. User asks question → Backend calls POST /ai/sessions/{id}/chat/stream")
 print("  5. AI engine retrieves relevant docs from RAG")
-print("  6. AI engine generates response using Gemini")
+print("  6. AI engine generates response using Hugging Face")
 print("  7. Response streamed back to user")
 
 print("\nExpected Endpoints (AI Engine):")
@@ -169,7 +169,7 @@ Backend (Node.js :5000)
 AI Engine (FastAPI :8000)
     ↓
 Components:
-    ├── GeminiService (gemini-2.0-flash-lite API)
+    ├── HuggingFaceService (Hugging Face Inference API)
     ├── RAGRetriever (FAISS + embeddings)
     ├── Agent (orchestrator)
     ├── NLP (intent + entities)
@@ -185,7 +185,7 @@ print("-" * 80)
 critical_files = [
     ("ai-engine/.env", "Environment configuration"),
     ("ai-engine/config.py", "AI engine config"),
-    ("ai-engine/core/gemini_service.py", "Gemini API client"),
+    ("ai-engine/core/huggingface_service.py", "Hugging Face API client"),
     ("ai-engine/core/local_llm.py", "LLM wrapper"),
     ("ai-engine/core/nlp.py", "NLP pipeline"),
     ("ai-engine/core/agent.py", "Agent orchestrator"),
@@ -210,11 +210,11 @@ print("\n[7] KNOWN FIXES VERIFICATION")
 print("-" * 80)
 
 fixes = [
-    ("LocalLLM .text error", "Fixed: gemini_service.generate() returns string"),
+    ("LocalLLM .text error", "Fixed: LLM service returns string"),
     ("Intent dict error", "Fixed: Handle dict response from IntentClassifier"),
     ("Entity tuple error", "Fixed: Convert dict to list of tuples"),
     ("Notification length", "Fixed: Pass only source.name, not full object"),
-    ("Model selection", "Updated: gemini-2.0-flash-lite"),
+    ("Model selection", "Updated: Hugging Face model selection"),
 ]
 
 for issue, fix in fixes:

@@ -1,4 +1,4 @@
-"""Quick test for gemini-2.5-flash fixes"""
+"""Quick test for Hugging Face fixes"""
 
 import os
 import sys
@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 print("=" * 70)
-print("TESTING GEMINI 2.5-FLASH FIXES")
+print("TESTING HUGGING FACE FIXES")
 print("=" * 70)
 
 # Test 1: LocalLLM generation (should not crash on .text)

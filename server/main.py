@@ -42,7 +42,8 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("🚀 Starting Collabry AI Core Server")
     logger.info(f"MongoDB: {CONFIG['mongo_uri']}")
-    logger.info(f"Ollama: {CONFIG['ollama_host']}")
+    logger.info(f"LLM Model: {CONFIG['llm_model']}")
+    logger.info(f"LLM Backend: {CONFIG['llm_backend']}")
     logger.info(f"JWT Algorithm: {CONFIG['jwt_algorithm']}")
     
     # Verify critical services

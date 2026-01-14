@@ -29,7 +29,7 @@ class HuggingFaceCloudEmbeddings(Embeddings):
     def __init__(self, model_name: str = "BAAI/bge-small-en-v1.5", api_key: Optional[str] = None):
         self.model_name = model_name
         self.api_key = api_key
-        self._model = EmbeddingModel(model_name=model_name, api_key=api_key)
+        self._model = EmbeddingModel(model_name=model_name)
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
         """Embed documents."""
@@ -63,7 +63,7 @@ _shared_embeddings = None
 _shared_config = None
 
 class RAGRetriever:
-    def __init__(self, config, user_id: Optional[str] = None):
+    def __init__(self, config, user_id: Optional[str] = None, session_id: Optional[str] = None):
         """
         Initialize RAG retriever with optional user isolation.
         Uses shared global vector store to prevent stale index issues.
@@ -77,7 +77,17 @@ class RAGRetriever:
         self.config = config
         self.user_id = user_id
         self.documents_path = Path(config.get("documents_path", "documents"))
-        self.faiss_index_path = config["faiss_index_path"]
+        # Support per-session FAISS indexes. If session_id provided, create a session-scoped
+        # index directory under the configured faiss_index_path. Otherwise use the shared path.
+        base_index_path = Path(config["faiss_index_path"])
+        if session_id:
+            # create per-user-session subfolder
+            safe_user = str(user_id).replace('/', '_') if user_id else 'anon'
+            safe_session = str(session_id).replace('/', '_')
+            self.faiss_index_path = str(base_index_path / f"{safe_user}_{safe_session}")
+        else:
+            self.faiss_index_path = str(base_index_path)
+        self.session_id = session_id
 
         if not self.documents_path.exists():
             self.documents_path.mkdir(parents=True, exist_ok=True)
@@ -103,6 +113,8 @@ class RAGRetriever:
         
         if user_id:
             logger.info(f"✓ RAG retriever initialized with user isolation: user_id={user_id}")
+        if session_id:
+            logger.info(f"✓ RAG retriever using session-scoped FAISS: session_id={session_id}, index={self.faiss_index_path}")
 
     def _load_or_create_vector_store(self):
         """Load FAISS index from disk if it exists, otherwise create it."""
@@ -174,8 +186,11 @@ class RAGRetriever:
                     embedding=self.embeddings,
                     metadatas=placeholder_meta,
                 )
-                # Persist locally so subsequent restarts have an index directory
-                self.vector_store.save_local(self.faiss_index_path)
+                # Persist to DB (GridFS) instead of keeping a local copy
+                try:
+                    self._persist_index_to_db()
+                except Exception as e:
+                    logger.warning(f"Could not persist placeholder FAISS to DB: {e}")
                 logger.info(f"Created placeholder FAISS index at {self.faiss_index_path}")
             except Exception as e:
                 logger.error(f"Failed to create placeholder FAISS index: {e}")
@@ -192,31 +207,17 @@ class RAGRetriever:
 
         # Create FAISS vector store
         self.vector_store = FAISS.from_documents(texts, self.embeddings)
-        # Persist locally
-        self.vector_store.save_local(self.faiss_index_path)
-        logger.info(f"FAISS index created and saved to {self.faiss_index_path}")
-
-        # Archive and store in Mongo GridFS (best-effort)
+        # Persist to DB (GridFS) and remove local copy to avoid disk state
         try:
-            archive_base = str(Path(self.faiss_index_path).name)
-            tmp_archive = str(Path(self.faiss_index_path).with_suffix('.tar.gz'))
-            # Create tar.gz of the index directory
-            shutil.make_archive(base_name=str(Path(self.faiss_index_path)), format='gztar', root_dir=str(Path(self.faiss_index_path).parent), base_dir=str(Path(self.faiss_index_path).name))
-            # Read bytes
-            with open(tmp_archive, 'rb') as f:
-                data = f.read()
-            mongo = MongoMemoryStore(self.config.get('mongo_uri'), self.config.get('mongo_db'), collection_name=self.config.get('memory_collection', 'conversations'))
-            archive_name = Path(self.faiss_index_path).name + ".tar.gz"
-            saved = mongo.save_faiss_index_archive(archive_name, data)
-            if saved:
-                logger.info(f"FAISS index archived to GridFS as {archive_name}")
-            # cleanup temporary archive file
-            try:
-                os.remove(tmp_archive)
-            except Exception:
-                pass
+            self._persist_index_to_db()
+            logger.info(f"FAISS index created and archived to DB for {self.faiss_index_path}")
         except Exception as e:
-            logger.warning(f"Could not save FAISS archive to MongoDB GridFS: {e}")
+            logger.warning(f"Could not persist FAISS index to DB: {e}. Falling back to local save.")
+            try:
+                self.vector_store.save_local(self.faiss_index_path)
+                logger.info(f"FAISS index created and saved to {self.faiss_index_path}")
+            except Exception as e2:
+                logger.error(f"Failed to save FAISS index locally: {e2}")
 
     def as_retriever(self):
         """Return the vector store as a LangChain retriever with user filtering."""
@@ -225,6 +226,48 @@ class RAGRetriever:
                 search_kwargs={"k": self.config.get("retrieval_top_k", 3)}
             )
         return None
+
+    def _persist_index_to_db(self):
+        """Archive the local FAISS index directory and save it to MongoDB GridFS.
+        This method will temporarily write the index locally (using LangChain
+        save_local), create a tar.gz archive, upload it to GridFS, then remove
+        the local files to avoid relying on disk state.
+        """
+        try:
+            # Ensure the vector store writes local files first
+            try:
+                self.vector_store.save_local(self.faiss_index_path)
+            except Exception as e:
+                logger.warning(f"Failed to save local FAISS index before archiving: {e}")
+
+            archive_base = str(Path(self.faiss_index_path).name)
+            tmp_archive = str(Path(self.faiss_index_path).with_suffix('.tar.gz'))
+            # Create tar.gz of the index directory
+            shutil.make_archive(base_name=str(Path(self.faiss_index_path)), format='gztar', root_dir=str(Path(self.faiss_index_path).parent), base_dir=str(Path(self.faiss_index_path).name))
+            # Read bytes
+            with open(tmp_archive, 'rb') as f:
+                data = f.read()
+
+            mongo = MongoMemoryStore(self.config.get('mongo_uri'), self.config.get('mongo_db'), collection_name=self.config.get('memory_collection', 'conversations'))
+            archive_name = Path(self.faiss_index_path).name + ".tar.gz"
+            saved = mongo.save_faiss_index_archive(archive_name, data)
+            if saved:
+                logger.info(f"FAISS index archived to GridFS as {archive_name}")
+                # Remove local directory to avoid local disk reliance
+                try:
+                    shutil.rmtree(self.faiss_index_path)
+                    logger.info(f"Removed local FAISS index directory: {self.faiss_index_path}")
+                except Exception as e:
+                    logger.warning(f"Failed to remove local FAISS index directory: {e}")
+            # cleanup temporary archive file
+            try:
+                os.remove(tmp_archive)
+            except Exception:
+                pass
+            return saved
+        except Exception as e:
+            logger.exception(f"Failed to persist FAISS index to DB: {e}")
+            raise
 
     def get_relevant_documents(self, query: str, user_id: Optional[str] = None, session_id: Optional[str] = None, source_ids: Optional[List[str]] = None) -> List[Document]:
         """
@@ -356,8 +399,16 @@ class RAGRetriever:
         _shared_vector_store = self.vector_store
         
         if save_index:
-            self.vector_store.save_local(self.faiss_index_path)
-            logger.info(f"  ✅ Saved FAISS index to disk: {self.faiss_index_path}")
+            try:
+                self._persist_index_to_db()
+                logger.info(f"  ✅ Persisted FAISS index to DB: {self.faiss_index_path}")
+            except Exception as e:
+                logger.warning(f"Failed to persist FAISS index to DB: {e}. Saving locally as fallback.")
+                try:
+                    self.vector_store.save_local(self.faiss_index_path)
+                    logger.info(f"  ✅ Saved FAISS index to disk (fallback): {self.faiss_index_path}")
+                except Exception as e2:
+                    logger.error(f"Failed to save FAISS index locally: {e2}")
         
         logger.info(f"✅ Successfully added {len(texts)} document chunks for user: {user_id}")
     
@@ -457,7 +508,14 @@ class RAGRetriever:
             _shared_vector_store = self.vector_store
         
         if save_index:
-            self.vector_store.save_local(self.faiss_index_path)
+            try:
+                self._persist_index_to_db()
+            except Exception as e:
+                logger.warning(f"Failed to persist FAISS index to DB after deletion: {e}. Saving locally as fallback.")
+                try:
+                    self.vector_store.save_local(self.faiss_index_path)
+                except Exception:
+                    pass
         
         logger.info(f"✓ Deleted {len(ids_to_delete)} document chunks (user={user_id}, source={source_id}, session={session_id})")
         return len(ids_to_delete)
@@ -465,3 +523,12 @@ class RAGRetriever:
 
 def create_rag_retriever(config, user_id: Optional[str] = None):
     return RAGRetriever(config, user_id=user_id)
+
+    
+    
+def _ensure_dir_exists(path):
+    try:
+        os.makedirs(path, exist_ok=True)
+    except Exception:
+        pass
+

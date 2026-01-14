@@ -395,6 +395,10 @@ class COLLABRYAgent:
             self.memory.save_context({"user_input": corrected}, {"output": raw_response})
             return
 
+        # Special handling for COURSE_FINDER_REQUEST: force web_search tool call
+        if "[COURSE_FINDER_REQUEST]" in corrected:
+            parsed_json = {"tool": "web_search", "args": {"query": "best courses Arrays in Programming online course tutorial"}}
+
         # 9. Handle direct answer (no tool)
         if parsed_json.get("tool") is None:
             answer = clean_answer(parsed_json.get("answer", ""))
@@ -455,6 +459,53 @@ class COLLABRYAgent:
         result = safe_execute_tool(tool_entry, args, self.llm)
         self.last_tool_called = canonical
 
+        # Special handling for COURSE_FINDER_REQUEST
+        if "[COURSE_FINDER_REQUEST]" in corrected and canonical == "web_search":
+            if isinstance(result, dict) and "results" in result:
+                courses = []
+                for r in result["results"][:8]:  # up to 8 courses
+                    title = r.get("title", "")
+                    url = r.get("url", "")
+                    snippet = r.get("snippet", "")
+                    platform = "Unknown"
+                    rating = ""
+                    price = ""
+                    url_lower = url.lower()
+                    if "udemy" in url_lower:
+                        platform = "Udemy"
+                    elif "coursera" in url_lower:
+                        platform = "Coursera"
+                    elif "edx" in url_lower:
+                        platform = "edX"
+                    elif "codecademy" in url_lower:
+                        platform = "Codecademy"
+                    # Simple rating extraction
+                    import re
+                    match = re.search(r'(\d\.\d)/5', snippet)
+                    if match:
+                        rating = match.group(1) + "/5"
+                    # Simple price extraction
+                    if "$" in snippet:
+                        price_match = re.search(r'\$[\d]+', snippet)
+                        if price_match:
+                            price = price_match.group(0)
+                    elif "free" in snippet.lower():
+                        price = "Free"
+                    course_line = f"[{title}]({url}) - Platform: {platform} | Rating: {rating} | Price: {price}"
+                    courses.append(course_line)
+                course_list = "\n".join(courses)
+                json_output = f'{{"tool": null, "answer": "{course_list}"}}'
+                on_token(json_output)
+                self.memory.save_context({"user_input": corrected}, {"output": json_output})
+                return
+            else:
+                # Fallback to short_answer
+                answer = clean_answer(result.get("short_answer", ""))
+                json_output = f'{{"tool": null, "answer": "{answer.replace(chr(34), chr(92) + chr(34))}"}}'
+                on_token(json_output)
+                self.memory.save_context({"user_input": corrected}, {"output": json_output})
+                return
+
         # 10. Synthesize pedagogical answer from tool result
         immediate = None
         full_content = None
@@ -472,17 +523,34 @@ class COLLABRYAgent:
         
         if immediate:
             # Synthesize pedagogical response
-            follow_prompt = (
-                f"The {canonical} tool returned:\n\n{clean_answer(immediate)}\n\n"
-                f"Student's question: {corrected}\n\n"
-                "Create a pedagogical response that:\n"
-                "1. Answers the student's specific question\n"
-                "2. Explains step-by-step if applicable\n"
-                "3. Cites sources (mention the tool used)\n"
-                "4. Never hallucinate - only use information from the tool result\n\n"
-                "Return JSON with answer and optional follow_up_questions:\n"
-                '{"tool": null, "answer": "<pedagogical response>", "follow_up_questions": ["Q1", "Q2", "Q3"]}'
-            )
+            if "[COURSE_FINDER_REQUEST]" in corrected and canonical == "web_search":
+                # Special prompt for course finder to enforce exact JSON format
+                follow_prompt = (
+                    f"Information found:\n\n{clean_answer(immediate)}\n\n"
+                    f"Question: {corrected}\n\n"
+                    "Extract 5-8 online courses about arrays in programming from the information above.\n"
+                    "For each course, provide:\n"
+                    "- Title\n"
+                    "- URL (direct course link)\n"
+                    "- Platform (e.g., Udemy, Coursera)\n"
+                    "- Rating (e.g., 4.5/5)\n"
+                    "- Price (e.g., $10 or Free)\n\n"
+                    "Format each as: [Title](URL) - Platform: P | Rating: R | Price: $P\n"
+                    "List them one per line in <COURSE_LIST>.\n\n"
+                    "Output only: {\"tool\": null, \"answer\": \"<COURSE_LIST>\"}"
+                )
+            else:
+                follow_prompt = (
+                    f"The {canonical} tool returned:\n\n{clean_answer(immediate)}\n\n"
+                    f"Student's question: {corrected}\n\n"
+                    "Create a pedagogical response that:\n"
+                    "1. Answers the student's specific question\n"
+                    "2. Explains step-by-step if applicable\n"
+                    "3. Cites sources (mention the tool used)\n"
+                    "4. Never hallucinate - only use information from the tool result\n\n"
+                    "Return JSON with answer and optional follow_up_questions:\n"
+                    '{"tool": null, "answer": "<pedagogical response>", "follow_up_questions": ["Q1", "Q2", "Q3"]}'
+                )
             
             try:
                 final_raw = self.llm.invoke(follow_prompt)

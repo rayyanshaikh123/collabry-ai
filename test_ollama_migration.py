@@ -1,8 +1,8 @@
 """
-Test script to verify Ollama migration is working correctly.
+Test script to verify Hugging Face migration is working correctly.
 
 Run this script to test all major components:
-- Ollama service initialization
+- Hugging Face service initialization
 - Intent classification
 - Entity extraction
 - Text generation
@@ -25,12 +25,11 @@ def test_config():
     try:
         from config import CONFIG
 
-        # Check Ollama config
+        # Basic LLM config sanity
         assert "llm_model" in CONFIG, "Missing llm_model in config"
-        assert "ollama_host" in CONFIG, "Missing ollama_host in config"
 
-        print("✅ Configuration loaded successfully"        print(f"   Model: {CONFIG['llm_model']}")
-        print(f"   Host: {CONFIG['ollama_host']}")
+        print("✅ Configuration loaded successfully")
+        print(f"   Model: {CONFIG['llm_model']}")
         return True
 
     except Exception as e:
@@ -38,21 +37,25 @@ def test_config():
         return False
 
 
-def test_ollama_service():
-    """Test Ollama service initialization."""
+def test_huggingface_service():
+    """Test Hugging Face service initialization."""
     print("\n" + "=" * 70)
-    print("TEST 2: Ollama Service")
+    print("TEST 2: Hugging Face Service")
     print("=" * 70)
 
     try:
-        from core.ollama_service import create_ollama_service
+        # Test LLM service via create_llm fallback
+        from core.local_llm import create_llm
+        from config import CONFIG
 
-        ollama = create_ollama_service()
-        print("✅ Ollama service initialized")
+        llm = create_llm(CONFIG)
+        print("✅ LLM service initialized")
 
         # Test basic generation
-        response = ollama.generate("Say 'Hello, Ollama!' in one short sentence.")
-        print("✅ Basic generation works"        print(f"   Response: {response[:100]}...")
+        # Use the LLM API compatible wrapper
+        resp = llm._call("Say 'Hello' in one short sentence.")
+        print("✅ Basic generation works")
+        print(f"   Response: {str(resp)[:200]}...")
 
         return True
 
@@ -70,7 +73,7 @@ def test_intent_classification():
     print("=" * 70)
     
     try:
-        from core.gemini_intent import IntentClassifier
+        from core.intent_classifier import IntentClassifier
         
         classifier = IntentClassifier()
         
@@ -154,7 +157,7 @@ def test_nlp_pipeline():
 def test_local_llm():
     """Test LocalLLM interface."""
     print("\n" + "=" * 70)
-    print("TEST 6: LocalLLM (Ollama-powered)")
+    print("TEST 6: LocalLLM (Hugging Face-powered)")
     print("=" * 70)
 
     try:
@@ -162,9 +165,12 @@ def test_local_llm():
         from config import CONFIG
 
         llm = create_llm(CONFIG)
-        response = llm.invoke("What is 2+2? Answer in one sentence.")
 
-        print("✅ LocalLLM works (backward compatibility)"        print(f"   Response: {response[:100]}...")
+        # Use direct call to maintain compatibility with older test harness
+        response = llm._call("What is 2+2? Answer in one sentence.")
+
+        print("✅ LocalLLM works (backward compatibility)")
+        print(f"   Response: {str(response)[:100]}...")
 
         return True
 
@@ -178,13 +184,13 @@ def test_local_llm():
 def main():
     """Run all tests."""
     print("\n" + "=" * 70)
-    print("COLLABRY AI ENGINE - OLLAMA MIGRATION TEST SUITE")
+    print("COLLABRY AI ENGINE - HUGGING FACE MIGRATION TEST SUITE")
     print("=" * 70)
     print()
 
     tests = [
         test_config,
-        test_ollama_service,
+        test_huggingface_service,
         test_intent_classification,
         test_entity_extraction,
         test_nlp_pipeline,
@@ -211,19 +217,18 @@ def main():
     print(f"\nTests Passed: {passed}/{total}")
 
     if passed == total:
-        print("\n🎉 ALL TESTS PASSED! Ollama migration successful.")
+        print("\n🎉 ALL TESTS PASSED! Hugging Face migration successful.")
         print("\nNext steps:")
         print("1. Start the server: python run_server.py")
         print("2. Test with frontend or curl")
-        print("3. Make sure Ollama is running: ollama serve")
+        print("3. Ensure HUGGINGFACE_API_KEY is set in .env")
         return 0
     else:
         print(f"\n⚠️ {total - passed} test(s) failed.")
         print("\nTroubleshooting:")
-        print("1. Check Ollama is installed and running")
-        print("2. Verify model is pulled: ollama pull llama3.1")
-        print("3. Check logs for detailed error messages")
-        print("4. See OLLAMA_MIGRATION.md for help")
+        print("1. Ensure HUGGINGFACE_API_KEY is set in .env")
+        print("2. Check logs for detailed error messages")
+        print("3. See ai-engine/DEPLOYMENT.md for help")
         return 1
 
 

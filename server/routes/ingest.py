@@ -51,18 +51,54 @@ def ingest_document_background(
             "started_at": datetime.utcnow()
         }
         
-        # Create RAG retriever for user
-        rag = RAGRetriever(CONFIG, user_id=user_id)
+        # Determine session scope if provided in metadata
+        session_scope = metadata.get("session_id") or None
+
+        # Create RAG retriever for user (session-scoped if session_id provided)
+        rag = RAGRetriever(CONFIG, user_id=user_id, session_id=session_scope)
+
+        # Deduplicate: if a document with same source_id or filename already exists in index, skip ingestion
+        source_id = metadata.get("source_id") or None
+        existing_found = False
+        try:
+            if rag.vector_store and hasattr(rag.vector_store, 'docstore'):
+                docstore = rag.vector_store.docstore
+                index_to_docstore_id = rag.vector_store.index_to_docstore_id
+                for idx, dsid in index_to_docstore_id.items():
+                    doc = docstore._dict.get(dsid)
+                    if not doc:
+                        continue
+                    md = doc.metadata or {}
+                    # match by explicit source_id first, then by filename/source
+                    if source_id and md.get('source_id') == source_id:
+                        existing_found = True
+                        break
+                    if md.get('source') == filename:
+                        existing_found = True
+                        break
+        except Exception:
+            # If any error inspecting docstore, continue with ingestion (safe fallback)
+            existing_found = False
+
+        if existing_found:
+            logger.info(f"Document already ingested for user={user_id}, source={source_id or filename}; skipping ingestion")
+            ingestion_tasks[task_id]["status"] = "completed"
+            ingestion_tasks[task_id]["completed_at"] = datetime.utcnow()
+            ingestion_tasks[task_id]["note"] = "skipped duplicate"
+            return
         
-        # Create document with metadata
+        # Create document with metadata (include source_id if provided)
+        doc_meta = {
+            "source": filename,
+            "user_id": user_id,
+            "uploaded_at": datetime.utcnow().isoformat(),
+        }
+        # merge provided metadata (e.g., source_id, session_id)
+        doc_meta.update(metadata or {})
+
         doc = Document(
             page_content=content,
-            metadata={
-                "source": filename,
-                "user_id": user_id,
-                "uploaded_at": datetime.utcnow().isoformat(),
-                **metadata
-            }
+            metadata=doc_meta
         )
         
         # Add document to user's RAG index (includes chunking & embedding)
@@ -248,12 +284,22 @@ async def delete_session_documents(
     try:
         logger.info(f"Delete request for session={session_id}, user={user_id}")
         
-        rag = RAGRetriever(CONFIG, user_id=user_id)
+        # Use session-scoped RAG retriever so we target the per-session FAISS index
+        rag = RAGRetriever(CONFIG, user_id=user_id, session_id=session_id)
         deleted_count = rag.delete_documents_by_metadata(
             user_id=user_id,
             session_id=session_id,
             save_index=True
         )
+        # Remove index directory for this session (best-effort)
+        try:
+            import shutil, os
+            index_dir = rag.faiss_index_path
+            if os.path.exists(index_dir):
+                shutil.rmtree(index_dir)
+                logger.info(f"Removed FAISS index directory for session: {index_dir}")
+        except Exception as e:
+            logger.warning(f"Failed to remove FAISS index directory: {e}")
         
         return {
             "success": True,
@@ -268,3 +314,31 @@ async def delete_session_documents(
             status_code=500,
             detail=f"Failed to delete session documents: {str(e)}"
         )
+
+
+    @router.post(
+        "/faiss/reset",
+        summary="Reset FAISS index for session",
+        description="Remove FAISS index files for a specific session (or session-scoped index).",
+    )
+    async def reset_faiss_index(
+        session_id: Optional[str] = None,
+        user_id: str = Depends(get_current_user)
+    ):
+        """
+        Reset FAISS index for the given session. If `session_id` is omitted, function will attempt
+        to reset the session-scoped index if available (no-op for shared index).
+        """
+        try:
+            rag = RAGRetriever(CONFIG, user_id=user_id, session_id=session_id)
+            index_dir = rag.faiss_index_path
+            import os, shutil
+            if os.path.exists(index_dir):
+                shutil.rmtree(index_dir)
+                logger.info(f"FAISS index reset: removed {index_dir}")
+                return {"success": True, "removed": index_dir}
+            else:
+                return {"success": True, "message": "Index directory not found", "path": index_dir}
+        except Exception as e:
+            logger.exception(f"Failed to reset FAISS index: {e}")
+            raise HTTPException(status_code=500, detail=f"Failed to reset FAISS index: {e}")

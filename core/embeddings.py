@@ -1,142 +1,61 @@
 """
-Embeddings + Vector Store (FAISS + Fallback)
+Embeddings + Vector Store (Sentence Transformers + MongoDB Atlas)
 
-Uses Hugging Face Inference API for cloud-based embeddings.
+Uses local Sentence Transformers for embeddings and MongoDB Atlas vector search.
 
 Fixes:
-- Proper incremental FAISS indexing (no full rebuild)
-- Correct fallback vector reconstruction on load()
-- Safe ID mapping (no collisions)
-- Correct removal handling (FAISS remove or full rebuild fallback)
-- Guaranteed consistency of _ids / _texts / _vecs
-- Thread-safe writes
+- Local lightweight embeddings using sentence-transformers
+- MongoDB Atlas vector search instead of FAISS
+- Thread-safe operations
+- Efficient vector similarity search
 """
 
 from typing import List, Sequence, Optional, Tuple, Dict
 import math
 import hashlib
 import threading
-import requests
 import logging
 
 logger = logging.getLogger(__name__)
 
 
 # ============================================================
-#  Embedding Model - Hugging Face Cloud
+#  Embedding Model - Local Sentence Transformers
 # ============================================================
 
 class EmbeddingModel:
     """
-    Embedding Model using Hugging Face Inference API:
-    - Uses cloud-based models via Hugging Face API
-    - Fallback to deterministic SHA-256 vector if API fails
+    Embedding Model using local Sentence Transformers:
+    - Uses lightweight local models for embeddings
+    - No cloud dependencies for embeddings
+    - Fast local processing
     """
 
-    def __init__(self, model_name: str = "BAAI/bge-small-en-v1.5", dim: int = 384, api_key: Optional[str] = None):
+    def __init__(self, model_name: str = "all-MiniLM-L6-v2", dim: int = 384):
         self.model_name = model_name
         self.dim = dim
-        self.api_key = api_key
-        self.api_url = f"https://router.huggingface.co/hf-inference/models/{model_name}"
-        self.headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
-        self._use_huggingface = bool(api_key)
 
-        # Test connection and get actual dimension
-        if self._use_huggingface:
-            try:
-                # Test with a simple text
-                test_result = self._test_connection()
-                if test_result and len(test_result) > 0:
-                    self.dim = len(test_result)
-                    logger.info(f"Connected to Hugging Face API. Model: {model_name}, Dimension: {self.dim}")
-                else:
-                    logger.warning("Hugging Face API test failed, falling back to local processing")
-                    self._use_huggingface = False
-            except Exception as e:
-                logger.warning(f"Hugging Face API initialization failed: {e}, falling back to local processing")
-                self._use_huggingface = False
-
-    def _test_connection(self) -> Optional[List[float]]:
-        """Test Hugging Face API connection."""
+        # Initialize sentence transformers model
         try:
-            response = requests.post(
-                self.api_url,
-                headers=self.headers,
-                json={"inputs": "test"},
-                timeout=10
-            )
-
-            if response.status_code == 200:
-                result = response.json()
-                if isinstance(result, list) and len(result) > 0:
-                    return result
-                elif isinstance(result, list) and len(result) == 0:
-                    return None
-                else:
-                    logger.warning(f"Unexpected API response format: {type(result)}")
-                    return None
-            else:
-                logger.warning(f"Hugging Face API test failed with status {response.status_code}: {response.text}")
-                return None
-
+            from sentence_transformers import SentenceTransformer
+            self.model = SentenceTransformer(model_name)
+            self._use_local = True
+            logger.info(f"✓ Using local Sentence Transformers model: {model_name}, Dimension: {self.dim}")
         except Exception as e:
-            logger.warning(f"Hugging Face API test failed: {e}")
-            return None
+            logger.warning(f"Failed to load Sentence Transformers model: {e}, falling back to deterministic processing")
+            self.model = None
+            self._use_local = False
 
     # ------------------------------
     def embed(self, texts: Sequence[str]) -> List[List[float]]:
-        """Generate embeddings using Hugging Face API."""
-        if self._use_huggingface and texts:
+        """Generate embeddings using local Sentence Transformers."""
+        if self._use_local and self.model and texts:
             try:
-                # Batch process texts
-                embeddings = []
-                batch_size = 10  # Process in batches to avoid rate limits
-
-                for i in range(0, len(texts), batch_size):
-                    batch_texts = list(texts[i:i + batch_size])
-
-                    # For single text, send as string; for multiple, send as list
-                    payload = {"inputs": batch_texts[0] if len(batch_texts) == 1 else batch_texts}
-
-                    response = requests.post(
-                        self.api_url,
-                        headers=self.headers,
-                        json=payload,
-                        timeout=30
-                    )
-
-                    if response.status_code != 200:
-                        # Fallback to old API format
-                        response = requests.post(
-                            self.api_url,
-                            headers=self.headers,
-                            json=payload,
-                            timeout=30
-                        )
-
-                    if response.status_code == 200:
-                        result = response.json()
-                        # Handle both single embedding and batch embeddings
-                        if isinstance(result, list) and len(result) > 0:
-                            if isinstance(result[0], list):
-                                # Batch result
-                                embeddings.extend(result)
-                            else:
-                                # Single result
-                                embeddings.append(result)
-                        else:
-                            logger.warning(f"Unexpected API response format: {type(result)}")
-                            break
-                    else:
-                        logger.warning(f"Hugging Face API error: {response.status_code} - {response.text}")
-                        break
-
-                if len(embeddings) == len(texts):
-                    # Ensure all embeddings are lists of floats
-                    return [[float(x) for x in emb] for emb in embeddings]
-
+                # Use sentence transformers to encode texts
+                embeddings = self.model.encode(list(texts), convert_to_numpy=True)
+                return embeddings.tolist()
             except Exception as e:
-                logger.warning(f"Hugging Face API embedding failed: {e}")
+                logger.warning(f"Sentence Transformers embedding failed: {e}")
 
         # Fallback to deterministic hashing
         logger.info("Using fallback deterministic embeddings")
@@ -180,37 +99,61 @@ class VectorStore:
     load(prefix)
     """
 
-    def __init__(self, dim: int):
+    def __init__(self, dim: int, mongo_uri: str = None, db_name: str = "collabry", collection_name: str = "vectors"):
+        from config import CONFIG
         self.dim = dim
         self._lock = threading.Lock()
 
-        # In-memory store for fallback mode
-        self._ids: List[str] = []
-        self._texts: List[str] = []
-        self._vecs: List[List[float]] = []
+        # MongoDB Atlas configuration - use config values
+        self.mongo_uri = mongo_uri or CONFIG.get("mongo_uri", "mongodb+srv://localhost:27017")
+        self.db_name = db_name or CONFIG.get("vector_db_name", "collabry")
+        self.collection_name = collection_name or CONFIG.get("vector_collection", "vectors")
 
-        # FAISS
-        self._use_faiss = False
-        self._index = None
-        self._id_to_int = {}
-        self._int_to_id = {}
-
+        # Initialize MongoDB client
         try:
-            import faiss
-            self.faiss = faiss
-            base = faiss.IndexFlatIP(dim)
+            from pymongo import MongoClient
+            self.client = MongoClient(self.mongo_uri)
+            self.db = self.client[self.db_name]
+            self.collection = self.db[self.collection_name]
 
-            # Prefer IDMap2
-            try:
-                self._index = faiss.IndexIDMap2(base)
-            except Exception:
-                self._index = faiss.IndexIDMap(base)
+            # Create vector search index if it doesn't exist
+            self._ensure_vector_index()
+            self._use_mongodb = True
+            logger.info(f"✓ Connected to MongoDB Atlas vector store: {self.db_name}.{self.collection_name}")
+        except Exception as e:
+            logger.error(f"Failed to connect to MongoDB Atlas: {e}")
+            self._use_mongodb = False
 
-            self._use_faiss = True
+    def _ensure_vector_index(self):
+        """Ensure vector search index exists."""
+        try:
+            # Check if index already exists
+            indexes = list(self.collection.list_indexes())
+            vector_index_exists = any(idx.get("name", "").startswith("vector_index") for idx in indexes)
 
-        except Exception:
-            self.faiss = None
-            self._index = None
+            if not vector_index_exists:
+                # Create vector search index
+                index_definition = {
+                    "name": "vector_index",
+                    "type": "vectorSearch",
+                    "definition": {
+                        "fields": [
+                            {
+                                "type": "vector",
+                                "path": "embedding",
+                                "numDimensions": self.dim,
+                                "similarity": "cosine"
+                            }
+                        ]
+                    }
+                }
+
+                # Note: In production, you'd create this index via MongoDB Atlas UI or CLI
+                # For now, we'll work with existing indexes
+                logger.info("Vector search index should be created manually in MongoDB Atlas")
+
+        except Exception as e:
+            logger.warning(f"Could not check/create vector index: {e}")
 
     # ======================================================
     #  Save & Load
@@ -218,81 +161,16 @@ class VectorStore:
 
     def save(self, prefix: str):
         """
-        Save metadata and FAISS index (if used).
+        Save operation not needed for MongoDB Atlas - data is persisted automatically.
         """
-        import json
-
-        meta = {
-            "ids": self._ids,
-            "texts": self._texts,
-        }
-
-        with open(prefix + ".meta.json", "w", encoding="utf-8") as f:
-            json.dump(meta, f, indent=2, ensure_ascii=False)
-
-        # Save FAISS index
-        if self._use_faiss and self._index is not None:
-            try:
-                self.faiss.write_index(self._index, prefix + ".index")
-            except Exception:
-                pass
-
-        # Save ID mapping
-        try:
-            with open(prefix + ".idmap.json", "w", encoding="utf-8") as f:
-                json.dump(
-                    {
-                        "id_to_int": self._id_to_int,
-                        "int_to_id": self._int_to_id,
-                    },
-                    f,
-                    indent=2,
-                    ensure_ascii=False,
-                )
-        except Exception:
-            pass
+        logger.info("MongoDB Atlas automatically persists data - no save needed")
 
     # ------------------------------
     def load(self, prefix: str):
-        import json, os
-
-        # Load metadata
-        meta_path = prefix + ".meta.json"
-        if os.path.exists(meta_path):
-            try:
-                with open(meta_path, "r", encoding="utf-8") as f:
-                    meta = json.load(f)
-                self._ids = meta.get("ids", [])
-                self._texts = meta.get("texts", [])
-            except Exception:
-                pass
-
-        # Load FAISS index
-        if self._use_faiss:
-            try:
-                idx_path = prefix + ".index"
-                if os.path.exists(idx_path):
-                    self._index = self.faiss.read_index(idx_path)
-            except Exception:
-                self._index = None
-
-        # Load ID map
-        try:
-            map_path = prefix + ".idmap.json"
-            if os.path.exists(map_path):
-                with open(map_path, "r", encoding="utf-8") as f:
-                    idmap = json.load(f)
-                self._id_to_int = idmap.get("id_to_int", {})
-                self._int_to_id = {int(k): v for k, v in (idmap.get("int_to_id") or {}).items()}
-        except Exception:
-            pass
-
-        # Rebuild fallback vectors if FAISS missing
-        if not self._use_faiss:
-            self._vecs = []
-            for txt in self._texts:
-                # defer to agent embedding model later
-                self._vecs.append([0.0] * self.dim)
+        """
+        Load operation not needed for MongoDB Atlas - connection is established on init.
+        """
+        logger.info("MongoDB Atlas connection established on initialization")
 
     # ======================================================
     #  Add Documents
@@ -300,20 +178,39 @@ class VectorStore:
 
     def add_documents(self, docs: Sequence[Tuple[str, str, Sequence[float]]]):
         """
-        Incrementally add vectors.
+        Add documents to MongoDB Atlas vector store.
         """
+        if not self._use_mongodb:
+            logger.warning("MongoDB not available, skipping document addition")
+            return
+
         with self._lock:
-            for doc_id, text, emb in docs:
-                if len(emb) != self.dim:
-                    raise ValueError("Embedding dimension mismatch")
+            try:
+                documents = []
+                for doc_id, text, emb in docs:
+                    if len(emb) != self.dim:
+                        raise ValueError(f"Embedding dimension mismatch: expected {self.dim}, got {len(emb)}")
 
-                self._ids.append(doc_id)
-                self._texts.append(text)
-                self._vecs.append(list(emb))
+                    document = {
+                        "_id": doc_id,
+                        "text": text,
+                        "embedding": emb,
+                        "metadata": {
+                            "created_at": threading.current_thread().ident,
+                            "length": len(text)
+                        }
+                    }
+                    documents.append(document)
 
-            # Add to FAISS
-            if self._use_faiss and self._index is not None:
-                self._faiss_add(docs)
+                if documents:
+                    # Insert documents (upsert to handle duplicates)
+                    for doc in documents:
+                        self.collection.replace_one({"_id": doc["_id"]}, doc, upsert=True)
+
+                    logger.info(f"Added {len(documents)} documents to vector store")
+
+            except Exception as e:
+                logger.error(f"Failed to add documents to MongoDB: {e}")
 
     # ------------------------------
     def _faiss_add(self, docs):
@@ -352,25 +249,53 @@ class VectorStore:
     #  Query
     # ======================================================
 
-    def query(self, query_emb: Sequence[float], top_k: int = 4):
-        if len(query_emb) != self.dim:
-            raise ValueError("Embedding dimension mismatch")
+    def query(self, query_emb: Sequence[float], top_k: int = 5) -> List[Tuple[str, str, float]]:
+        """
+        Query similar documents using MongoDB Atlas vector search.
+        """
+        if not self._use_mongodb:
+            logger.warning("MongoDB not available, returning empty results")
+            return []
 
-        # FAISS search
-        if self._use_faiss and self._index is not None:
-            return self._faiss_query(query_emb, top_k)
+        try:
+            if len(query_emb) != self.dim:
+                raise ValueError(f"Query embedding dimension mismatch: expected {self.dim}, got {len(query_emb)}")
 
-        # Fallback: brute force cosine similarity
-        sims = []
-        qnorm = math.sqrt(sum(x * x for x in query_emb)) or 1.0
-        for doc_id, text, vec in zip(self._ids, self._texts, self._vecs):
-            dot = sum(a * b for a, b in zip(query_emb, vec))
-            vnorm = math.sqrt(sum(x * x for x in vec)) or 1.0
-            score = dot / (qnorm * vnorm)
-            sims.append((doc_id, text, score))
+            # Use MongoDB aggregation pipeline for vector search
+            pipeline = [
+                {
+                    "$vectorSearch": {
+                        "index": "vector_index",
+                        "path": "embedding",
+                        "queryVector": query_emb,
+                        "numCandidates": top_k * 10,  # Search more candidates for better results
+                        "limit": top_k
+                    }
+                },
+                {
+                    "$project": {
+                        "_id": 1,
+                        "text": 1,
+                        "score": {"$meta": "vectorSearchScore"}
+                    }
+                }
+            ]
 
-        sims.sort(key=lambda x: x[2], reverse=True)
-        return sims[:top_k]
+            results = list(self.collection.aggregate(pipeline))
+
+            # Format results
+            formatted_results = []
+            for result in results:
+                doc_id = str(result["_id"])
+                text = result["text"]
+                score = float(result["score"])
+                formatted_results.append((doc_id, text, score))
+
+            return formatted_results
+
+        except Exception as e:
+            logger.error(f"Vector search query failed: {e}")
+            return []
 
     # ------------------------------
     def _faiss_query(self, qemb, top_k):
@@ -405,37 +330,17 @@ class VectorStore:
 
     def remove_documents(self, doc_ids: Sequence[str]):
         """
-        Safely remove documents.
-        If FAISS doesn't support remove_ids, fallback to full rebuild.
+        Remove documents from MongoDB Atlas vector store.
         """
-        with self._lock:
-            if not doc_ids:
-                return
+        if not self._use_mongodb:
+            logger.warning("MongoDB not available, skipping document removal")
+            return
 
-            doc_ids = set(doc_ids)
-
-            # Remove from FAISS if possible
-            if self._use_faiss and self._index is not None:
-                try:
-                    self._faiss_remove(doc_ids)
-                except Exception:
-                    # fallback: rebuild entire index
-                    self._rebuild_faiss()
-
-            # Always clean internal lists
-            new_ids = []
-            new_texts = []
-            new_vecs = []
-
-            for did, txt, vec in zip(self._ids, self._texts, self._vecs):
-                if did not in doc_ids:
-                    new_ids.append(did)
-                    new_texts.append(txt)
-                    new_vecs.append(vec)
-
-            self._ids = new_ids
-            self._texts = new_texts
-            self._vecs = new_vecs
+        try:
+            result = self.collection.delete_many({"_id": {"$in": list(doc_ids)}})
+            logger.info(f"Removed {result.deleted_count} documents from vector store")
+        except Exception as e:
+            logger.error(f"Failed to remove documents from MongoDB: {e}")
 
     # ------------------------------
     def _faiss_remove(self, doc_ids):

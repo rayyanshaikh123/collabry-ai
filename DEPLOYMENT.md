@@ -29,22 +29,23 @@ Make sure these are set in your hosting platform:
 - `PORT` - The port to bind to (automatically detected)
 - `MONGODB_URI` - MongoDB connection string
 - `JWT_SECRET_KEY` - For authentication
-- `HUGGINGFACE_API_KEY` - For embeddings
-- `GEMINI_API_KEY` - For LLM (optional, falls back to Ollama)
+- `HF_TOKEN` - **REQUIRED** for Hugging Face Router API
+- `HUGGINGFACE_MODEL` - Model name (default: openai/gpt-oss-120b:groq)
 
-## Render.com Configuration
+## Cloud AI Processing
 
-In your Render service settings:
-- **Build Command:** `pip install -r requirements.txt`
-- **Start Command:** `python start_production.py`
+The system uses **Hugging Face Router API** for all AI processing:
+- **No local models** - All processing happens in the cloud
+- **API key required** - Get your token from https://huggingface.co/settings/tokens
+- **Supported models** - Access to high-quality open-source models via router
+- **OpenAI-compatible** - Uses OpenAI client library for API calls
+- **Rate limits apply** - Free tier has usage limits
 
-## Troubleshooting
+### Getting Your Hugging Face Token
 
-### "Connection reset by peer" during pip install
-If you see network errors during package installation:
-1. The `sentence-transformers` dependency has been removed to avoid large PyTorch downloads
-2. All embeddings now use cloud Hugging Face API (no local ML models)
-3. Re-deploy should be much faster and more reliable
+1. Go to https://huggingface.co/settings/tokens
+2. Create a new token with "Read" permissions
+3. Add it to your `.env` file as `HF_TOKEN=your_token_here`
 
 ### Port binding issues
 - Use `python start_production.py` instead of `python run_server.py`

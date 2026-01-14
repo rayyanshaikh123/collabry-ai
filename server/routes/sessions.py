@@ -303,9 +303,27 @@ async def delete_session(
         
         # Delete all messages in this session
         messages_collection.delete_many({"session_id": session_id})
-        
+
+        # Delete session-scoped FAISS index and any associated documents
+        try:
+            from core.rag_retriever import RAGRetriever
+            rag = RAGRetriever(CONFIG, user_id=user_id, session_id=session_id)
+            deleted_count = rag.delete_documents_by_metadata(
+                user_id=user_id,
+                session_id=session_id,
+                save_index=True
+            )
+            # Remove the index directory itself
+            import shutil, os
+            index_dir = rag.faiss_index_path
+            if os.path.exists(index_dir):
+                shutil.rmtree(index_dir)
+                logger.info(f"Removed FAISS index directory for deleted session: {index_dir}")
+        except Exception as e:
+            logger.exception(f"Failed to cleanup FAISS index for session {session_id}: {e}")
+
         logger.info(f"Deleted session {session_id} for user {user_id}")
-        
+
         return {"message": "Session deleted successfully"}
         
     except HTTPException:

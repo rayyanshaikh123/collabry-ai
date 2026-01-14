@@ -82,23 +82,26 @@ class MemoryManager:
         # In-memory checkpointer instance (ready to be used by langgraph-based flows)
         self.checkpointer = InMemorySaver()
 
-        # Initialize MongoDB persistence (REQUIRED)
+        # Initialize MongoDB persistence (with fallback to in-memory)
         mongo_uri = CONFIG["mongo_uri"]
         mongo_db = CONFIG["mongo_db"]
         collection = CONFIG["memory_collection"]
-        
-        self._mongo_store = MongoMemoryStore(
-            mongo_uri=mongo_uri,
-            db_name=mongo_db,
-            collection_name=collection,
-            user_id=self.user_id,
-        )
-        
-        if not self._mongo_store.is_connected():
-            raise ConnectionError(
-                f"MongoDB connection failed to {mongo_uri}. "
-                "Memory persistence requires MongoDB. Please ensure MongoDB is running."
+
+        try:
+            self._mongo_store = MongoMemoryStore(
+                mongo_uri=mongo_uri,
+                db_name=mongo_db,
+                collection_name=collection,
+                user_id=self.user_id,
             )
+
+            if not self._mongo_store.is_connected():
+                raise ConnectionError("MongoDB not connected")
+
+        except Exception as e:
+            logger.warning(f"MongoDB connection failed: {e}. Using in-memory storage only.")
+            logger.warning("⚠️ Memory will not persist between sessions. This is for development only.")
+            self._mongo_store = None
         
         logger.info(f"✓ MongoDB memory persistence enabled: {mongo_db}.{collection}")
         logger.info(f"✓ User isolation: user_id={user_id}, session_id={session_id}, thread={self.thread_id}")
@@ -119,26 +122,28 @@ class MemoryManager:
         }
 
     def save_context(self, input_dict: Dict[str, Any], output_dict: Dict[str, Any]):
-        """Append one conversational turn and persist to MongoDB."""
+        """Append one conversational turn and persist to MongoDB if available."""
         user = (input_dict or {}).get("user_input", "")
         assistant = (output_dict or {}).get("output", "")
         turn = {"timestamp": time.time(), "user": user, "assistant": assistant}
 
         # Store in memory
         self._history_by_thread.setdefault(self.thread_id, []).append(turn)
-        
-        # Persist to MongoDB
-        success = self._mongo_store.append_turn(
-            thread_id=self.thread_id,
-            user_message=user,
-            assistant_message=assistant,
-            metadata={"timestamp": turn["timestamp"]},
-            user_id=self.user_id,
-        )
-        
-        if not success:
-            logger.error(f"Failed to persist turn to MongoDB for thread={self.thread_id}")
-            raise RuntimeError("MongoDB persistence failed")
+
+        # Persist to MongoDB if available
+        if self._mongo_store:
+            success = self._mongo_store.append_turn(
+                thread_id=self.thread_id,
+                user_message=user,
+                assistant_message=assistant,
+                metadata={"timestamp": turn["timestamp"]},
+                user_id=self.user_id,
+            )
+
+            if not success:
+                logger.warning(f"Failed to persist turn to MongoDB for thread={self.thread_id}")
+        else:
+            logger.debug(f"MongoDB not available - turn stored in memory only for thread={self.thread_id}")
 
     def get_history_string(self) -> str:
         vars = self.load_memory_variables({})
@@ -155,8 +160,9 @@ class MemoryManager:
         # Note: This only clears in-memory cache. Use delete_thread() to remove from MongoDB.
 
     def delete_thread(self):
-        """Permanently delete current thread from MongoDB."""
-        self._mongo_store.delete_thread(self.thread_id, user_id=self.user_id)
+        """Permanently delete current thread from MongoDB if available."""
+        if self._mongo_store:
+            self._mongo_store.delete_thread(self.thread_id, user_id=self.user_id)
         self._history_by_thread[self.thread_id] = []
 
     # ---------------- Optional helpers ----------------
@@ -192,7 +198,11 @@ class MemoryManager:
     
     def get_all_threads(self) -> List[str]:
         """Get list of all thread IDs for current user."""
-        return self._mongo_store.get_all_threads(user_id=self.user_id)
+        if self._mongo_store:
+            return self._mongo_store.get_all_threads(user_id=self.user_id)
+        else:
+            # Return in-memory threads only
+            return list(self._history_by_thread.keys())
     
     def list_user_sessions(self) -> List[Dict[str, Any]]:
         """
@@ -207,13 +217,18 @@ class MemoryManager:
                 tid_user, tid_session = parse_thread_id(thread_id)
                 if tid_user == self.user_id:
                     # Get last activity timestamp
-                    history = self._mongo_store.load_thread_history(
-                        thread_id=thread_id,
-                        user_id=self.user_id,
-                        limit=1
-                    )
-                    last_ts = history[0]["timestamp"] if history else 0
-                    
+                    if self._mongo_store:
+                        history = self._mongo_store.load_thread_history(
+                            thread_id=thread_id,
+                            user_id=self.user_id,
+                            limit=1
+                        )
+                        last_ts = history[0]["timestamp"] if history else 0
+                    else:
+                        # Use in-memory history
+                        thread_history = self._history_by_thread.get(thread_id, [])
+                        last_ts = thread_history[-1]["timestamp"] if thread_history else 0
+
                     sessions.append({
                         "session_id": tid_session,
                         "thread_id": thread_id,
@@ -247,7 +262,6 @@ class MemoryManager:
         
         logger.info(f"✓ Created new session: {session_id} for user: {self.user_id}")
         return session_id
-        return self._mongo_store.get_all_threads(user_id=self.user_id)
 
     def close(self):
         """Close MongoDB connection."""
@@ -256,14 +270,26 @@ class MemoryManager:
 
     # ---------------- Internal utilities ----------------
     def _load_thread_from_storage(self, thread_id: str):
-        """Load a specific thread from MongoDB."""
-        history = self._mongo_store.load_thread_history(
-            thread_id=thread_id,
-            user_id=self.user_id,
-            limit=50
-        )
-        self._history_by_thread[thread_id] = history
-        logger.debug(f"Loaded {len(history)} turns for thread={thread_id}")
+        """Load a specific thread from MongoDB if available."""
+        if self._mongo_store:
+            history = self._mongo_store.load_thread_history(
+                thread_id=thread_id,
+                user_id=self.user_id,
+                limit=50
+            )
+            # Convert to expected format
+            formatted_history = []
+            for msg in history:
+                formatted_history.append({
+                    "timestamp": msg["timestamp"],
+                    "user": msg["user"],
+                    "assistant": msg["assistant"]
+                })
+            self._history_by_thread[thread_id] = formatted_history
+            logger.debug(f"Loaded {len(formatted_history)} turns for thread={thread_id}")
+        else:
+            # MongoDB not available, keep in-memory history
+            logger.debug(f"Using in-memory history for thread {thread_id}")
 
     def _format_buffer(self, history: List[Dict[str, Any]], max_turns: int = 10) -> str:
         tail = history[-max_turns:]

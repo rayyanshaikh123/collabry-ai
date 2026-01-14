@@ -1,25 +1,24 @@
 # Collabry AI Core Engine - Study Copilot
 
-**Pedagogical AI Learning Assistant** - A modular AI backend powered by Google Gemini, designed to help students learn effectively through proven educational strategies.
+**Pedagogical AI Learning Assistant** - A modular AI backend powered by the Hugging Face Inference API, designed to help students learn effectively through proven educational strategies.
 
-## 🚀 What's New: Gemini-Powered AI Engine
+## 🚀 What's New: Cloud Hugging Face Router API
 
-**January 2025 Update:** The AI engine has been migrated from Ollama/Llama 3.1 to Google Gemini for improved performance, accuracy, and easier deployment.
+**January 2025 Update:** The AI engine uses the new Hugging Face Router API for cloud-based AI processing, providing access to state-of-the-art models through a unified OpenAI-compatible interface.
 
-✅ **2-3x faster** response times  
-✅ **10x faster** startup (no model loading)  
-✅ **90-95%** intent classification accuracy  
-✅ **$0** hosting cost (free tier)  
-✅ **Zero local dependencies** (cloud-based)  
+✅ **Cloud AI processing** - All LLM calls via Hugging Face Router API  
+✅ **OpenAI-compatible** - Uses OpenAI client library  
+✅ **High-quality models** - Access to GPT-OSS-120B and other models  
+✅ **Intent classification via LLM**  
+✅ **Zero local hardware requirements**  
 
-📖 **[See GEMINI_MIGRATION.md for complete migration details](GEMINI_MIGRATION.md)**  
-⚡ **[Quick Start Guide →](QUICKSTART_GEMINI.md)**
+📖 See the `ai-engine/DEPLOYMENT.md` for deployment and API key setup.
 
 ## Architecture
 
 This is a **backend-only AI Core Engine** with:
 - **Study Copilot Agent** - Pedagogical AI optimized for learning
-- **Google Gemini** - Unified AI reasoning engine (replaces Ollama + spaCy + HuggingFace)
+- **Hugging Face Inference API** - Cloud LLM backend (no local models)
 - **FastAPI REST API** with JWT authentication
 - **Multi-user isolation** (see [MULTI_USER_ARCHITECTURE.md](MULTI_USER_ARCHITECTURE.md))
 - LangChain-compatible agent orchestration
@@ -89,17 +88,15 @@ The Study Copilot employs research-backed learning strategies:
 - System automation
 - Task scheduler
 
-## Quick Start
+### Quick Start
 
 ### Prerequisites
 
-1. **Get Gemini API Key** (REQUIRED - replaces Ollama):
-   - Visit: https://aistudio.google.com/app/apikey
-   - Sign in with Google account
-   - Click "Create API Key"
-   - Copy the generated key
-   
-   **Note:** Free tier includes 15 requests/minute, 1.5M tokens/day
+1. **Get Hugging Face API Token** (REQUIRED - for LLM + embeddings):
+   - Visit: https://huggingface.co/settings/tokens
+   - Sign in or create an account
+   - Click "New token" → choose `read` scope (or `inference` where required)
+   - Copy the generated token
 
 2. **Install MongoDB** (REQUIRED for memory persistence):
    ```powershell
@@ -127,12 +124,12 @@ The Study Copilot employs research-backed learning strategies:
    ```
    
    **Minimum required variables:**
-   - `GEMINI_API_KEY` - Google Gemini API key (from step 1)
+   - `HUGGINGFACE_API_KEY` - Hugging Face API token (from step 1)
    - `MONGO_URI` - MongoDB connection string
    - `JWT_SECRET_KEY` - Secret for JWT validation (CHANGE IN PRODUCTION!)
    
    **Optional but recommended:**
-   - `GEMINI_MODEL` - Model to use (default: gemini-2.0-flash-lite)
+   - `HUGGINGFACE_MODEL` - Model to use (default: configured in `config.py`)
    - `SERPER_API_KEY` - Enhanced web search (get free key at https://serper.dev)
 
 ### Running the FastAPI Server
@@ -231,13 +228,11 @@ Edit [`config.py`](config.py) to customize:
 
 Environment variables override config defaults:
 ```powershell
-# Ollama Configuration (standardized ENV variables)
-$env:OLLAMA_BASE_URL = "http://localhost:11434"  # Ollama API endpoint
-$env:OLLAMA_MODEL = "llama3.1"                   # Model name
-$env:OLLAMA_TIMEOUT = "60"                       # Request timeout (seconds)
-$env:OLLAMA_MAX_RETRIES = "3"                    # Retry attempts on failure
-$env:OLLAMA_RETRY_DELAY = "1.0"                  # Initial retry delay (seconds)
-
+# Hugging Face configuration (set in .env or environment)
+$env:HUGGINGFACE_API_KEY = "<your-token>"
+$env:HUGGINGFACE_MODEL = "gpt2"  # or another HF-hosted model
+$env:LLM_TIMEOUT = "60"
+```
 # Legacy ENV variables (still supported)
 $env:OLLAMA_HOST = "http://localhost:11434"
 $env:COLLABRY_LLM_MODEL = "mistral"
