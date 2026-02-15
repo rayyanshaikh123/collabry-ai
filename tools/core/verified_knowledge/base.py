@@ -12,7 +12,7 @@ from pathlib import Path
 import pickle
 
 from langchain_community.vectorstores import FAISS
-from langchain.schema import Document
+from langchain_core.documents import Document
 from core.embeddings import get_embedding_client
 from config import Config
 

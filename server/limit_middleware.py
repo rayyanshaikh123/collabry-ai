@@ -20,10 +20,22 @@ class UsageLimitMiddleware(BaseHTTPMiddleware):
     # Subscription tier limits (AI questions per day)
     # Synced with backend/src/config/plans.js PLAN_LIMITS.aiQuestionsPerDay
     TIER_LIMITS = {
-        "free": 10,       # 10 questions/day
-        "basic": 100,     # 100 questions/day
-        "pro": -1,        # unlimited
-        "enterprise": -1  # unlimited
+        "free": 10,        # 10 questions/day
+        "starter": 50,     # 50 questions/day
+        "basic": 50,       # legacy alias for starter
+        "pro": -1,         # unlimited
+        "unlimited": -1,   # unlimited
+        "enterprise": -1   # legacy alias
+    }
+    
+    # Voice Tutor turn limits per day
+    VOICE_LIMITS = {
+        "free": 0,         # no voice access
+        "starter": 10,     # 10 voice turns/day
+        "basic": 10,       # legacy alias
+        "pro": 50,         # 50 voice turns/day
+        "unlimited": -1,   # unlimited
+        "enterprise": -1   # legacy alias
     }
     
     # Endpoints that consume question quota

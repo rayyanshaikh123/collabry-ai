@@ -5,8 +5,8 @@ Batch Claim Processor - Process multiple claims in parallel for performance.
 import asyncio
 import logging
 from typing import List, Dict, Any
-from langchain.schema import Document
-from tools.core.verified_knowledge import VerifiedKnowledgeStore, get_verified_knowledge_store
+from langchain_core.documents import Document
+from core.verified_knowledge import VerifiedKnowledgeStore, get_verified_knowledge_store
 from core.verification.confidence_scorer import VerificationResult
 
 logger = logging.getLogger(__name__)

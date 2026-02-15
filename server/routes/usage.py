@@ -27,10 +27,12 @@ router = APIRouter(prefix="/ai/usage", tags=["usage"])
 # Subscription tier limits (AI questions per day)
 # Synced with backend/src/config/plans.js PLAN_LIMITS.aiQuestionsPerDay
 SUBSCRIPTION_LIMITS = {
-    "free": 10,       # 10 questions/day
-    "basic": 100,     # 100 questions/day
-    "pro": -1,        # unlimited
-    "enterprise": -1  # unlimited
+    "free": 10,        # 10 questions/day
+    "starter": 50,     # 50 questions/day
+    "basic": 50,       # legacy alias for starter
+    "pro": -1,         # unlimited
+    "unlimited": -1,   # unlimited
+    "enterprise": -1   # legacy alias
 }
 
 
