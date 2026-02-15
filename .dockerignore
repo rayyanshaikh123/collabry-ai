@@ -1,0 +1,99 @@
+# Python cache
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv
+.venv
+env
+ENV
+.env
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache
+.coverage
+.tox
+htmlcov
+coverage.xml
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# FAISS indexes (will be volume-mounted)
+data/faiss_index/*
+memory/*
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+docs/
+PROVIDER_TESTING.md
+REFACTORING_GUIDE.md
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Logs
+*.log
+logs/
+
+# Development scripts
+run_server.py
+check_*.py
+inspect_*.py
+test_*.py
+audit_*.py
+_debug_*.py
+run_master_audit.py
+
+# Notebooks
+*.ipynb
+
+# Railway
+railway.json
+
+# API directory (for Railway)
+api/

@@ -1,0 +1,105 @@
+{
+  "id": "curriculum_general",
+  "notebook_id": "general",
+  "title": "Introduction to Photosynthesis",
+  "description": "Comprehensive guide to understanding photosynthesis in plants",
+  "topics": [
+    {
+      "id": "topic_1",
+      "name": "What is Photosynthesis?",
+      "subtopics": [
+        {
+          "id": "subtopic_1_1",
+          "name": "Definition and Overview",
+          "content": "Photosynthesis is the process by which plants, algae, and some bacteria convert light energy into chemical energy stored in glucose. This process is fundamental to life on Earth as it produces oxygen and organic compounds that other organisms depend on. The word photosynthesis comes from Greek: 'photo' meaning light and 'synthesis' meaning putting together. Plants use sunlight, water, and carbon dioxide to create glucose and oxygen.",
+          "key_concepts": [
+            "light energy",
+            "chemical energy",
+            "glucose",
+            "oxygen production"
+          ],
+          "examples": [
+            "Plants in your garden",
+            "Trees in forests",
+            "Algae in oceans"
+          ],
+          "difficulty": "easy"
+        },
+        {
+          "id": "subtopic_1_2",
+          "name": "Where Photosynthesis Occurs",
+          "content": "Photosynthesis takes place primarily in the leaves of plants, specifically in specialized organelles called chloroplasts. Chloroplasts contain chlorophyll, a green pigment that absorbs light energy. The structure of a leaf is optimized for photosynthesis with a large surface area to capture sunlight and pores called stomata that allow gas exchange. Each chloroplast has internal membrane structures called thylakoids where the light-dependent reactions occur.",
+          "key_concepts": [
+            "chloroplasts",
+            "chlorophyll",
+            "leaves",
+            "stomata",
+            "thylakoids"
+          ],
+          "examples": [
+            "Leaf cross-section",
+            "Chloroplast structure"
+          ],
+          "difficulty": "medium"
+        }
+      ],
+      "prerequisites": [],
+      "estimated_minutes": 15
+    },
+    {
+      "id": "topic_2",
+      "name": "The Photosynthesis Equation",
+      "subtopics": [
+        {
+          "id": "subtopic_2_1",
+          "name": "Chemical Equation",
+          "content": "The overall equation for photosynthesis is: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂. This means six molecules of carbon dioxide plus six molecules of water, using light energy, produce one molecule of glucose and six molecules of oxygen. This is a simplified representation of a complex series of chemical reactions. Understanding this equation helps us see the inputs and outputs of the process.",
+          "key_concepts": [
+            "carbon dioxide",
+            "water",
+            "glucose",
+            "oxygen",
+            "chemical equation"
+          ],
+          "examples": [
+            "Balanced chemical equation",
+            "Molecular models"
+          ],
+          "difficulty": "medium"
+        }
+      ],
+      "prerequisites": [
+        "topic_1"
+      ],
+      "estimated_minutes": 10
+    },
+    {
+      "id": "topic_3",
+      "name": "Light-Dependent Reactions",
+      "subtopics": [
+        {
+          "id": "subtopic_3_1",
+          "name": "Light Absorption and Electron Transport",
+          "content": "The light-dependent reactions occur in the thylakoid membranes of chloroplasts. When light hits chlorophyll, it excites electrons to a higher energy state. These energized electrons move through an electron transport chain, releasing energy used to pump hydrogen ions across the membrane. This creates a concentration gradient that drives ATP synthesis. Water molecules are split to replace the electrons, releasing oxygen as a byproduct.",
+          "key_concepts": [
+            "electron transport chain",
+            "ATP synthesis",
+            "water splitting",
+            "oxygen release"
+          ],
+          "examples": [
+            "Thylakoid membrane diagram",
+            "Electron flow"
+          ],
+          "difficulty": "hard"
+        }
+      ],
+      "prerequisites": [
+        "topic_1",
+        "topic_2"
+      ],
+      "estimated_minutes": 15
+    }
+  ],
+  "total_estimated_minutes": 40
+}
