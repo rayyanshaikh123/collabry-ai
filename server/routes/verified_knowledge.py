@@ -11,7 +11,7 @@ from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, status
 from pydantic import BaseModel, HttpUrl
 
 from server.deps import get_current_user
-from core.verified_knowledge import VerifiedKnowledgeIngestionService, IngestionResult
+from tools.core.verified_knowledge import VerifiedKnowledgeIngestionService, IngestionResult
 
 logger = logging.getLogger(__name__)
 
@@ -218,7 +218,7 @@ async def get_stats(current_user: dict = Depends(get_current_user)):
     Returns:
         Coverage statistics
     """
-    from core.verified_knowledge import get_verified_knowledge_store
+    from tools.core.verified_knowledge import get_verified_knowledge_store
     
     vkb = get_verified_knowledge_store()
     stats = vkb.get_coverage_stats()

@@ -6,7 +6,7 @@ import asyncio
 import logging
 from typing import List, Dict, Any
 from langchain.schema import Document
-from core.verified_knowledge import VerifiedKnowledgeStore, get_verified_knowledge_store
+from tools.core.verified_knowledge import VerifiedKnowledgeStore, get_verified_knowledge_store
 from core.verification.confidence_scorer import VerificationResult
 
 logger = logging.getLogger(__name__)

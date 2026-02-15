@@ -11,9 +11,9 @@ from dataclasses import dataclass
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-from core.verified_knowledge.base import get_verified_knowledge_store
-from core.verified_knowledge.extractors import URLExtractor, TextProcessor, PDFExtractor
-from core.verified_knowledge.validators import ContentValidator, AuthorityClassifier
+from .base import get_verified_knowledge_store
+from .extractors import URLExtractor, TextProcessor, PDFExtractor
+from .validators import ContentValidator, AuthorityClassifier
 
 logger = logging.getLogger(__name__)
 

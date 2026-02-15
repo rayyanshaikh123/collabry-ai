@@ -15,7 +15,7 @@ from typing import Dict, Any, List, Optional, AsyncGenerator
 from config import CONFIG
 from core.llm import chat_completion
 from core.rag_retriever import RAGRetriever
-from core.verified_knowledge import get_verified_knowledge_store
+from tools.core.verified_knowledge import get_verified_knowledge_store
 from core.verification.claim_extractor import HybridClaimExtractor
 from core.verification.validators import (
     ArithmeticValidator,
