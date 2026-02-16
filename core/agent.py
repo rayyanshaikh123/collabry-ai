@@ -239,12 +239,29 @@ async def run_agent(
     stream: bool = True,
     sender_name: Optional[str] = None,
     is_collaborative: bool = False,
-    token: Optional[str] = None
+    token: Optional[str] = None,
+    verified_mode: bool = False
 ) -> AsyncGenerator[Dict[str, Any], None]:
     """
     Main entry point using the simplified linear flow.
     SECURITY FIX - Phase 2/3: Enhanced with artifact precedence and security fixes.
+    VERIFIED MODE: Routes to VerifiedStudyOrchestrator when verified_mode=True.
     """
+    # Route to verified mode if enabled
+    if verified_mode:
+        from tools.core.verification.orchestrator import VerifiedStudyOrchestrator
+        orchestrator = VerifiedStudyOrchestrator()
+        async for event in orchestrator.process(
+            message=message,
+            user_id=user_id,
+            notebook_id=notebook_id,
+            source_ids=source_ids,
+            session_id=session_id
+        ):
+            yield event
+        return
+    
+    # Normal mode (existing flow)
     # 1. Initialize State with proper user isolation
     session_state = get_session_state(session_id, user_id)
 
